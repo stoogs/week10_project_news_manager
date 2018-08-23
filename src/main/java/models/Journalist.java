@@ -1,10 +1,12 @@
 package models;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name="journalists")
 public class Journalist {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="id")
@@ -13,10 +15,14 @@ public class Journalist {
     @Column(name="journalist_name")
     private String journalistName;
 
+    @OneToMany(mappedBy = "journalist", fetch = FetchType.LAZY)
+    private List<Article> journalistArticles;
+
     //TODO Add Articles Array
 
     public Journalist(String journalistName) {
         this.journalistName = journalistName;
+//        this.journalistArticles = new List<Article>();
     }
 
     public int getId() {

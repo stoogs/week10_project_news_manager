@@ -1,5 +1,5 @@
 import db.DBHelper;
-//import models.Article;
+import models.Article;
 import models.Category;
 import models.Journalist;
 
@@ -15,8 +15,9 @@ public class Runner {
         Journalist journalistMonkey86 = new Journalist("Monkey 86");
             DBHelper.save(journalistMonkey86);
 
-//            Date testDate = new Date();
-//
-//        Article articleTest = new Article("Test", journalistMonkey86, categoryCrime, "Test News", "test test test", testDate);
+            Date testDate = new Date();
+
+        Article articleTest = new Article("Test", journalistMonkey86, categoryCrime, "Test News", "test test test", testDate);
+        DBHelper.save(articleTest);
         }
 }

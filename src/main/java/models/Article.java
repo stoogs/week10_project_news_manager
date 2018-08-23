@@ -15,10 +15,14 @@ public class Article {
     @Column(name = "title")
     private String title;
 
-    @Column(name = "journalist")
+//    TODO: add many to one - journalist
+    @ManyToOne
+    @JoinColumn(name = "journalist_id", nullable = false)
     private Journalist journalist;
 
-    @Column(name = "catergory")
+    //    TODO: add many to one - category
+    @ManyToOne
+    @JoinColumn(name = "category_id", nullable = false)
     private Category category;
 
     @Column(name = "headline")

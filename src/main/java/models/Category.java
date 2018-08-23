@@ -1,6 +1,7 @@
 package models;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "categories")
@@ -14,9 +15,14 @@ public class Category {
     @Column(name = "category_name")
     private String categoryName;
 
+    @OneToMany(mappedBy = "category", fetch = FetchType.LAZY)
+    private List<Article> categoryArticles;
+
     public Category(String categoryName) {
         this.id = id;
         this.categoryName = categoryName;
+//        this.categoryArticles = new List<Article>();
+
 //        TODO: add array of articles
     }
 

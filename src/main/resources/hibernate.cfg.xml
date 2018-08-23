@@ -13,7 +13,7 @@
         <property name="show_sql">true</property>
         <mapping class = "Runner"/>
         <mapping class = "models.Journalist"/>
-        <!--<mapping class = "models.Article"/>-->
+        <mapping class = "models.Article"/>
         <mapping class = "models.Category"/>
     </session-factory>
 </hibernate-configuration>
