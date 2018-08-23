@@ -1,41 +1,22 @@
+import db.DBHelper;
+//import models.Article;
+import models.Category;
+import models.Journalist;
+
+import java.util.Date;
+
 public class Runner {
 
     public static void main(String[] args) {
 
+        Category categoryCrime = new Category("Crime");
+            DBHelper.save(categoryCrime);
 
+        Journalist journalistMonkey86 = new Journalist("Monkey 86");
+            DBHelper.save(journalistMonkey86);
 
-
-
-
-
-
-//        Ship pearl = new Ship("The Black Pearl");
-//        DBHelper.save(pearl);
+//            Date testDate = new Date();
 //
-//        Ship dutchman = new Ship("The Flying Dutchman");
-//        DBHelper.save(dutchman);
-//
-//        Pirate pirate1 = new Pirate("Hector", "Barbossa", 65, Weapon.PISTOL, pearl);
-//        DBHelper.save(pirate1);
-//        Pirate pirate2 = new Pirate("Will", "Turner", 23, Weapon.DAGGER, dutchman);
-//        DBHelper.save(pirate2);
-//        Pirate pirate3 = new Pirate("Elizabeth", "Swanson", 24, Weapon.PISTOL, dutchman);
-//        DBHelper.save(pirate3);
-//
-//        Captain captain1 = new Captain("Jack", "Sparrow", 32, Weapon.CUTLASS, 100, pearl);
-//        DBHelper.save(captain1);
-//        Captain captain2 = new Captain("Davey", "Jones", 154, Weapon.CUTLASS, 39, dutchman);
-//        DBHelper.save(captain2);
-//
-//        Raid raid1 = new Raid("Tortuga", 200);
-//        DBHelper.save(raid1);
-//
-//        DBPirate.addPirateToRaid(pirate1, raid1);
-//        DBPirate.addPirateToRaid(pirate2, raid1);
-//
-//        List<Pirate> pirates = DBRaid.getRaidPirates(raid1);
-//        List<Raid> raids = DBPirate.getPirateRaids(pirate1);
-
-
+//        Article articleTest = new Article("Test", journalistMonkey86, categoryCrime, "Test News", "test test test", testDate);
         }
 }

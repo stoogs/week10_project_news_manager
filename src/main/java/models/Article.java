@@ -1,15 +1,36 @@
 package models;
 
-public class Article {
-    private int id;
-    private String title;
-    private Journalist journalist;
-    private Category category;
-    private String headline;
-    private String content;
-    private DateFormater timeStamp;
+import javax.persistence.*;
+import java.util.Date;
 
-    public Article(String title, Journalist journalist, Category category, String headline, String content, DateFormater timeStamp) {
+@Entity
+@Table(name = "articles")
+public class Article {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
+    private int id;
+
+    @Column(name = "title")
+    private String title;
+
+    @Column(name = "journalist")
+    private Journalist journalist;
+
+    @Column(name = "catergory")
+    private Category category;
+
+    @Column(name = "headline")
+    private String headline;
+
+    @Column(name = "content")
+    private String content;
+
+    @Column(name = "time_stamp")
+    private Date timeStamp;
+
+    public Article(String title, Journalist journalist, Category category, String headline, String content, Date timeStamp) {
         this.id = id;
         this.title = title;
         this.journalist = journalist;
@@ -67,11 +88,11 @@ public class Article {
         this.content = content;
     }
 
-    public DateFormater getTimeStamp() {
+    public Date getTimeStamp() {
         return timeStamp;
     }
 
-    public void setTimeStamp(DateFormater timeStamp) {
+    public void setTimeStamp(Date timeStamp) {
         this.timeStamp = timeStamp;
     }
 }
