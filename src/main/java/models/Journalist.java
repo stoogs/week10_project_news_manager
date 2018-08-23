@@ -18,10 +18,13 @@ public class Journalist {
     @OneToMany(mappedBy = "journalist", fetch = FetchType.LAZY)
     private List<Article> journalistArticles;
 
-    //TODO Add Articles Array
+    @Column(name="biography", columnDefinition = "TEXT")
+    private String biography;
 
-    public Journalist(String journalistName) {
+    public Journalist(String journalistName, String biography) {
         this.journalistName = journalistName;
+        this.biography = biography;
+
 //        this.journalistArticles = new List<Article>();
     }
 
