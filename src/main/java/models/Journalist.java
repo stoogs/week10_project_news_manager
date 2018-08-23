@@ -1,8 +1,20 @@
 package models;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="journalists")
 public class Journalist {
+    @Id
+    @Column(name="id")
     private int id;
+
+    @Column(name="journalist_name")
     private String journalistName;
+
     //TODO Add Articles Array
 
     public Journalist(String journalistName) {
