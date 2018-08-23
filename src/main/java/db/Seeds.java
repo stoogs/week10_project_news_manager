@@ -38,7 +38,7 @@ public class Seeds {
 
         // -------------------------Seed Date----------------------------------------------------------
 
-        Date testDate = new Date();
+        Date currentDate = new Date();
         Date myDate = parseDate("2014-12-25 13:45");
 
         // -------------------------Seed Article---------------------------------------------------
