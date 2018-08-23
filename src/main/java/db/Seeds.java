@@ -4,6 +4,7 @@ package db;
 import models.Article;
 import models.Category;
 import models.Journalist;
+import models.Location;
 
 import java.util.Date;
 
@@ -37,8 +38,9 @@ public class Seeds {
 
         Date testDate = new Date();
         // -------------------------Seed Journalists---------------------------------------------------
-
-        Article articleTest = new Article("Test", journalistMonkey86, categoryCrime, "Test News", "test test test", testDate);
+        Location testLocation = new Location("tetsLocation");
+        DBHelper.save(testLocation);
+        Article articleTest = new Article("Test", journalistMonkey86, categoryCrime, testLocation, "test test test","Test content",testDate);
         DBHelper.save(articleTest);
 
 
