@@ -1,5 +1,7 @@
 package models;
 
+import org.omg.PortableInterceptor.LOCATION_FORWARD;
+
 import javax.persistence.*;
 import java.util.Date;
 
@@ -25,6 +27,11 @@ public class Article {
     @JoinColumn(name = "category_id", nullable = false)
     private Category category;
 
+    //    TODO: add many to one - location
+    @ManyToOne
+    @JoinColumn(name = "location_id", nullable = false)
+    private Location location;
+
     @Column(name = "headline")
     private String headline;
 
@@ -34,11 +41,12 @@ public class Article {
     @Column(name = "time_stamp")
     private Date timeStamp;
 
-    public Article(String title, Journalist journalist, Category category, String headline, String content, Date timeStamp) {
+    public Article(String title, Journalist journalist, Category category, Location location, String headline, String content, Date timeStamp) {
         this.id = id;
         this.title = title;
         this.journalist = journalist;
         this.category = category;
+        this.location = location;
         this.headline = headline;
         this.content = content;
         this.timeStamp = timeStamp;
@@ -74,6 +82,14 @@ public class Article {
 
     public void setCategory(Category category) {
         this.category = category;
+    }
+
+    public Location getLocation() {
+        return location;
+    }
+
+    public void setLocation(Location location) {
+        this.location = location;
     }
 
     public String getHeadline() {

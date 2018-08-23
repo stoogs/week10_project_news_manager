@@ -15,5 +15,6 @@
         <mapping class = "models.Journalist"/>
         <mapping class = "models.Article"/>
         <mapping class = "models.Category"/>
+        <mapping class = "models.Location"/>
     </session-factory>
 </hibernate-configuration>
