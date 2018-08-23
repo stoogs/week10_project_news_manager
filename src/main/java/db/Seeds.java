@@ -6,6 +6,8 @@ import models.Category;
 import models.Journalist;
 import models.Location;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class Seeds {
@@ -37,12 +39,21 @@ public class Seeds {
         // -------------------------Seed Date----------------------------------------------------------
 
         Date testDate = new Date();
-        // -------------------------Seed Journalists---------------------------------------------------
+        Date myDate = parseDate("2014-12-25 13:45");
+
+        // -------------------------Seed Article---------------------------------------------------
         Location testLocation = new Location("tetsLocation");
         DBHelper.save(testLocation);
-        Article articleTest = new Article("Test", journalistMonkey86, categoryCrime, testLocation, "test test test","Test content",testDate);
+        Article articleTest = new Article("Test", journalistMonkey86, categoryCrime, testLocation, "test test test","Test content",myDate);
         DBHelper.save(articleTest);
 
 
+    }
+    public static Date parseDate(String date) {
+        try {
+            return new SimpleDateFormat("yyyy-MM-dd hh:mm").parse(date);
+        } catch (ParseException e) {
+            return null;
+        }
     }
     }
