@@ -13,8 +13,8 @@ import java.util.Date;
 public class Seeds {
     public static void seedData() {
         // -------------------------Seed Categories ---------------------------------------------------
-
-
+        Category categoryCrime = new Category("Crime");
+        DBHelper.save(categoryCrime);
         Category categoryEnvironmental = new Category("Environmental");
         DBHelper.save(categoryEnvironmental);
         Category categoryObituary = new Category("Obituary");
@@ -55,24 +55,59 @@ public class Seeds {
         DBHelper.save(enos);  // TOO LONG
         Journalist ollieTheChimp  = new Journalist("Ollie The Chimp", "Ollie was a chimpanzee suspected to be a missing link between humans and apes. In Karl's world, Ollie befriended a zoo-keeper who took him out for dinners and eventually let him live with him. Ollie would start the day with a cuppa tea, end on a brandy, and in the end of the story run off with the zoo-keeper's wife, leaving him a lonely divorcee.");
         DBHelper.save(ollieTheChimp);  // TOO LONG
-
+        // -------------------------Seed Locations-----------------------------------------------------
+        Location testLocation = new Location("testLocation");
+        DBHelper.save(testLocation);
+        Location locationLocal = new Location("Local");
+        DBHelper.save(locationLocal);
+        Location locationUK = new Location("UK");
+        DBHelper.save(locationUK);
+        Location locationOuterSpace = new Location("Outer Space");
+        DBHelper.save(locationOuterSpace);
+        Location locationWorld = new Location("World");
+        DBHelper.save(locationWorld);
+        Location locationZoo = new Location("Zoo");
+        DBHelper.save(locationZoo);
 
 
         // -------------------------Seed Date----------------------------------------------------------
 
         Date currentDate = new Date();
         Date myDate = parseDate("2014-12-25 13:45");
+        Date dateS01e01 = new Date(2005,12,05);
+//        Date dateS01e02 = new Date(2005,12,12);
+//        Date dateS01e03 = new Date(2005,12,19);
+//        Date dateS01e04 = new Date(2005,12,26);
+//        Date dateS01e05 = new Date(2006,01,02);
+//        Date dateS01e06 = new Date(2006,01,9);
+//        Date dateS01e07 = new Date(2006,01,16);
+//        Date dateS01e08 = new Date(2006,01,23);
+//        Date dateS01e09 = new Date(2006,01,30);
+//        Date dateS01e10 = new Date(2006,02,06);
+//        Date dateS01e11 = new Date(2006,02,13);
+//        Date dateS01e12 = new Date(2006,02,20);
 
         // -------------------------Seed Article---------------------------------------------------
-        Location testLocation = new Location("tetsLocation");
-        DBHelper.save(testLocation);
-        Article articleTest = new Article("Test", journalistMonkey86, categoryCrime, testLocation, "test test test","Test content",myDate);
+        Article articleTest = new Article("Test", journalistMonkey86, categoryCrime, testLocation,myDate,"test test test","Test content");
         DBHelper.save(articleTest);
 
-        Article s01e01 = new Article("Monkey In space", alfredTheMonkey,)
+//Article(String title, Journalist journalist, Category category, Location location, String headline, String content, Date timeStamp)
+        Article articles01e01 = new Article("Monkey In space", alfredTheMonkey, categoryOuterSpace,locationOuterSpace,dateS01e01,
+                "Monkey wasn't allowed to go back in space, ends up committing suicide because couldn't reach the buzz similar to space traveling any other way",
+                "Ricky introduces the regular feature, Monkey News. Steve cues the jingle and Ricky obliges. Karl begins to speak of the first thing in space -- Armstrong gets the glory, but there was a monkey first (Note: His actual name was Ham). Laika the dog is mentioned, but Karl dismisses it. The banana dispenser is explained in full. Karl parries all of Steve and Ricky's initial inquiries and moves on. After the monkey launches the rocket, he begins his journey into space. The mission is accomplished and he reverses back to Earth. The celebration is short-lived, because the monkey was never able to return to space, grew despondent (as evidenced by its demeanour) and eventually killed itself. Ricky dismisses all of this as absolute bollocks.");
+        DBHelper.save(articles01e01);
+
+
+
+
 
 
     }
+
+
+
+
+
     public static Date parseDate(String date) {
         try {
             return new SimpleDateFormat("yyyy-MM-dd hh:mm").parse(date);

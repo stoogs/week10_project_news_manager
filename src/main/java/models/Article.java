@@ -32,16 +32,16 @@ public class Article {
     @JoinColumn(name = "location_id", nullable = false)
     private Location location;
 
-    @Column(name = "headline")
+    @Column(name = "headline", columnDefinition = "TEXT")
     private String headline;
 
-    @Column(name = "content")
+    @Column(name = "content", columnDefinition = "TEXT")
     private String content;
 
     @Column(name = "time_stamp")
     private Date timeStamp;
 
-    public Article(String title, Journalist journalist, Category category, Location location, String headline, String content, Date timeStamp) {
+    public Article(String title, Journalist journalist, Category category, Location location, Date timeStamp,String headline, String content) {
         this.id = id;
         this.title = title;
         this.journalist = journalist;
