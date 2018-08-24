@@ -1,9 +1,12 @@
 package models;
 
-import org.omg.PortableInterceptor.LOCATION_FORWARD;
+import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 import java.util.Date;
+import java.util.GregorianCalendar;
+
 
 @Entity
 @Table(name = "articles")
@@ -38,10 +41,11 @@ public class Article {
     @Column(name = "content", columnDefinition = "TEXT")
     private String content;
 
+//    @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "time_stamp")
-    private Date timeStamp;
+    private GregorianCalendar timeStamp;
 
-    public Article(String title, Journalist journalist, Category category, Location location, Date timeStamp,String headline, String content) {
+    public Article(String title, Journalist journalist, Category category, Location location, GregorianCalendar timeStamp, String headline, String content) {
         this.id = id;
         this.title = title;
         this.journalist = journalist;
@@ -108,11 +112,11 @@ public class Article {
         this.content = content;
     }
 
-    public Date getTimeStamp() {
+    public GregorianCalendar getTimeStamp() {
         return timeStamp;
     }
 
-    public void setTimeStamp(Date timeStamp) {
+    public void setTimeStamp(GregorianCalendar timeStamp) {
         this.timeStamp = timeStamp;
     }
 }
