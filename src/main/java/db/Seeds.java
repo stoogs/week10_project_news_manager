@@ -14,8 +14,30 @@ public class Seeds {
     public static void seedData() {
         // -------------------------Seed Categories ---------------------------------------------------
 
-        Category categoryCrime = new Category("Crime");
-        DBHelper.save(categoryCrime);
+
+        Category categoryEnvironmental = new Category("Environmental");
+        DBHelper.save(categoryEnvironmental);
+        Category categoryObituary = new Category("Obituary");
+        DBHelper.save(categoryObituary);
+        Category categoryLocal = new Category("Local");
+        DBHelper.save(categoryLocal);
+        Category categoryPropaganda = new Category("Propaganda");
+        DBHelper.save(categoryPropaganda);
+        Category categoryFakeNews = new Category("FakeNews");
+        DBHelper.save(categoryFakeNews);
+        Category categoryOuterSpace = new Category("Outer Space");
+        DBHelper.save(categoryOuterSpace);
+        Category categoryLocalHero = new Category("Local Hero");
+        DBHelper.save(categoryLocalHero);
+        Category categoryPolitics = new Category("Politics");
+        DBHelper.save(categoryPolitics);
+        Category categoryTech = new Category("Tech");
+        DBHelper.save(categoryTech);
+        Category categoryScience = new Category("Science");
+        DBHelper.save(categoryScience);
+        Category categoryBusiness = new Category("Business");
+        DBHelper.save(categoryBusiness);
+
        // -------------------------Seed Journalists----------------------------------------------------
         Journalist journalistMonkey86 = new Journalist("Monkey 86","Drove to Spain after nicking a car from a magician he used to work for");
         DBHelper.save(journalistMonkey86); // OK
@@ -46,6 +68,8 @@ public class Seeds {
         DBHelper.save(testLocation);
         Article articleTest = new Article("Test", journalistMonkey86, categoryCrime, testLocation, "test test test","Test content",myDate);
         DBHelper.save(articleTest);
+
+        Article s01e01 = new Article("Monkey In space", alfredTheMonkey,)
 
 
     }
