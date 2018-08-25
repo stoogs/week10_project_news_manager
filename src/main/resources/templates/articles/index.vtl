@@ -1,0 +1,37 @@
+<h2>Welcome to Article Index.vtl</h2>
+
+
+<a href="/articles/new">New Article</a>
+
+<p class="pageHeader">Articles</p>
+<div class="container">
+    <table>
+        <tr>
+            <th>Edit</th>
+            <th>Show</th>
+            <th>Delete</th>
+            <th>Title: </th>
+            <th>Journalist: </th>
+            <th>Category: </th>
+            <th>Location: </th>
+            <th>TimeStamp: </th>
+            <th>Headline: </th>
+            <th>Content: </th>
+            <th></th>
+        </tr>
+        #foreach($article in $articles)
+        <tr>
+            <td><a href="/articles/edit/$article.getId()" class="button center">Edit</a>
+            <td><a href="/articles/$article.getId()" class="button center">Show</a>
+            <td><a href="/articles/delete/$article.getId()" class="button center">Delete</a>
+            <td>$article.getTitle() </td>
+            <td>$article.getJournalist().getJournalistName() </td>
+            <td>$article.getCategory().getCategoryName() </td>
+            <td>$article.getLocation().getLocationName() </td>
+            <td>TIME HERE :( </td>
+            <td>$article.getHeadline() </td>
+            <td>$article.getContent() </td>
+        <tr>
+            #end
+    </table>
+</div>
