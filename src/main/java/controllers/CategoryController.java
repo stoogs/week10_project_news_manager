@@ -28,6 +28,17 @@ public class CategoryController {
             return new ModelAndView(model, "templates/layout.vtl");
         }, new VelocityTemplateEngine());
 
+//        SHOW
+        get("/categories/:id", (req, res) -> {
+            String strId = req.params(":id");
+            Integer intId = Integer.parseInt(strId);
+            Category category = DBHelper.find(Category.class, intId);
+            Map<String, Object> model = new HashMap<>();
+            model.put("categories", category);
+            model.put("template", "templates/categories/show.vtl");
+            return new ModelAndView(model, "templates/layout.vtl");
+        }, new VelocityTemplateEngine());
+
 
 //        NEW
         get("/categories/new", (req, res) -> {
@@ -48,6 +59,7 @@ public class CategoryController {
             res.redirect("/categories");
             return new ModelAndView(model, "layout.vtl");
         }, new VelocityTemplateEngine());
+
 
 //        UPDATE
         get("/categories/edit/:id", (req, res) -> {
@@ -72,6 +84,17 @@ public class CategoryController {
             HashMap<String, Object> model = new HashMap<>();
             res.redirect("/categories");
             return new ModelAndView(model, "layout.vtl");
+        }, new VelocityTemplateEngine());
+
+
+//        DELETE
+        get ("/categories/delete/:id", (req, res) -> {
+            String strId = req.params(":id");
+            Integer intId = Integer.parseInt(strId);
+            Category deletedCategory = DBHelper.find(Category.class, intId);
+            DBHelper.delete(deletedCategory);
+            res.redirect("/categories");
+            return null;
         }, new VelocityTemplateEngine());
 
     }
