@@ -19,6 +19,7 @@ public class CategoryController {
 
     public void setupEndpoints(){
 
+//        INDEX
         get("/categories", (req, res) -> {
             Map<String, Object> model = new HashMap<>();
             List<Category> categoryList = DBHelper.getAll(Category.class);
@@ -27,6 +28,8 @@ public class CategoryController {
             return new ModelAndView(model, "templates/layout.vtl");
         }, new VelocityTemplateEngine());
 
+
+//        NEW
         get("/categories/new", (req, res) -> {
             Map<String, Object> model = new HashMap<>();
             List<Category> categoryList = DBHelper.getAll(Category.class);
@@ -46,7 +49,30 @@ public class CategoryController {
             return new ModelAndView(model, "layout.vtl");
         }, new VelocityTemplateEngine());
 
+//        UPDATE
+        get("/categories/edit/:id", (req, res) -> {
+            String strId = req.params(":id");
+            Integer intId = Integer.parseInt(strId);
+            Category category = DBHelper.find(Category.class, intId);
 
+            Map<String, Object> model = new HashMap<>();
+            model.put ("category", category);
+            model.put("template", "templates/categories/edit.vtl");
+            return new ModelAndView(model, "templates/layout.vtl");
+        }, new VelocityTemplateEngine());
+
+        post ("/categories/:id", (req, res) -> {
+            String strId = req.params(":id");
+            Integer intId = Integer.parseInt(strId);
+            Category categoryList = DBHelper.find(Category.class, intId);
+            String categoryName = req.queryParams("categoryName");
+
+            categoryList.setCategoryName(categoryName);
+            DBHelper.update(categoryList);
+            HashMap<String, Object> model = new HashMap<>();
+            res.redirect("/categories");
+            return new ModelAndView(model, "layout.vtl");
+        }, new VelocityTemplateEngine());
 
     }
 }

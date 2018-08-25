@@ -12,7 +12,9 @@
         #foreach($category in $categories)
         <tr>
             <td>$category.getCategoryName()</td>
+            <td><a href="/categories/edit/$category.getId()">Edit</a></td>
         <tr>
+
             #end
     </table>
 </div>
