@@ -1,0 +1,8 @@
+<p class="pageHeader">Edit Location</p>
+
+<form action="/locations/$location.getId()" method="post">
+    <label for="title">Edit Location</label>
+    <input class="inputbox" type="text" name="locationName" required="true" value="$location.getLocationName()">
+
+    <input type="submit" value="Save" class="button">
+</form>

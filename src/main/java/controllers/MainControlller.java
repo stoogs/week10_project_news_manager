@@ -19,7 +19,7 @@ public class MainControlller {
         ArticleController articleController = new ArticleController();
         CategoryController categoryController = new CategoryController();
         JournalistController journalistController = new JournalistController();
-        LoctionController loctionController = new LoctionController();
+        LocationController loctionController = new LocationController();
 
         get("/", (req, res) -> {
             Map<String, Object> model = new HashMap<>();
