@@ -5,6 +5,9 @@ import java.util.List;
 
 @Entity
 @Table(name = "locations")
+
+
+
 public class Location {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -21,6 +24,9 @@ public class Location {
         this.id = id;
         this.locationName = locationName;
 //    this.locationArticles = new List<Article>();
+    }
+
+    public Location() {
     }
 
     public int getId() {

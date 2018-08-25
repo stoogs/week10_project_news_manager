@@ -18,6 +18,9 @@ public class Category {
     @OneToMany(mappedBy = "category", fetch = FetchType.LAZY)
     private List<Article> categoryArticles;
 
+    public Category() {
+    }
+
     public Category(String categoryName) {
         this.id = id;
         this.categoryName = categoryName;

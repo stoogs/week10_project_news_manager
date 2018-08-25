@@ -40,6 +40,22 @@ public class DBHelper {
         }
     }
 
+    public static <T> List<T> getList(Criteria criteria) {
+        List<T> results = null;
+        try {
+            transaction = session.beginTransaction();
+            results = criteria.list();
+            ;
+            transaction.commit();
+        } catch (HibernateException ex) {
+            transaction.rollback();
+            ex.printStackTrace();
+        } finally {
+            session.close();
+        }
+        return results;
+    }
+
     public static void delete(Object object){
         session = HibernateUtil.getSessionFactory().openSession();
         try {

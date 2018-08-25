@@ -45,6 +45,9 @@ public class Article {
     @Column(name = "time_stamp")
     private GregorianCalendar timeStamp;
 
+    public Article() {
+    }
+
     public Article(String title, Journalist journalist, Category category, Location location, GregorianCalendar timeStamp, String headline, String content) {
         this.id = id;
         this.title = title;

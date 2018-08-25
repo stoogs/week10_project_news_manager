@@ -10,10 +10,7 @@ import org.apache.commons.lang.ObjectUtils;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
-import java.util.Calendar;
-import java.util.Comparator;
-import java.util.Date;
-import java.util.GregorianCalendar;
+import java.util.*;
 
 
 public class Seeds {
@@ -122,6 +119,14 @@ public class Seeds {
         Article articles01e08 = new Article("Monkey Winter Olympics", alfredTheMonkey, categoryObituary, locationWorld, dateS01E08,
                 "Monkey crashes bobsled during Winter Olympics...", "Monkey crashes bobsled during Winter Olympics because of photographers' cameras flashes, is taken by an ambulance, ends up in zoo with some sort of neck guard");
         DBHelper.save(articles01e08);
+
+        //------------------------------ARRAY TESTS------------------------------
+        List<Journalist> journalists = DBHelper.getAll(Journalist.class);
+
+        journalists.add(ham);
+        System.out.println(journalists);
+
+
         //------------------------------TEST METHODS-----------------------------
         //Calculate age of any story.
         //storyAge(dateS01E01);

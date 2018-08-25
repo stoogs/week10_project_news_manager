@@ -21,11 +21,13 @@ public class Journalist {
     @Column(name="biography", columnDefinition = "TEXT")
     private String biography;
 
+    public Journalist() {
+    }
+
     public Journalist(String journalistName, String biography) {
         this.journalistName = journalistName;
         this.biography = biography;
-
-//        this.journalistArticles = new List<Article>();
+      //  this.journalistArticles = new List<Article>();
     }
 
     public int getId() {
