@@ -1,6 +1,7 @@
 package controllers;
 
 import db.DBHelper;
+import models.Category;
 import models.Journalist;
 import spark.ModelAndView;
 import spark.template.velocity.VelocityTemplateEngine;
@@ -24,6 +25,15 @@ public class JournalistController {
         //VelocityTemplateEngine velocityTemplateEngine = new VelocityTemplateEngine();
         //staticFileLocation("/public");
 //        ArrayList<Journalist> journalists = new ArrayList<>();
+        get("/journalists/:id/edit", (req, res) -> {
+            String strId = req.params(":id");
+            Integer intId = Integer.parseInt(strId);
+            Journalist editJournalist = DBHelper.find(Journalist.class, intId);
+            Map<String, Object> model = new HashMap<>();
+            model.put("journalist", editJournalist);
+            model.put("template", "templates/journalists/edit.vtl");
+            return new ModelAndView(model, "templates/layout.vtl");
+        }, new VelocityTemplateEngine());
 
         get("/journalists/new", (req, res) -> {
             HashMap<String, Object> model = new HashMap<>();
@@ -40,7 +50,7 @@ public class JournalistController {
             model.put("journalists", journalists);
             return new ModelAndView(model, "templates/layout.vtl");
         }, new VelocityTemplateEngine());
-
+//UPDATE
         post ("/journalists", (req, res) -> {
             String journalistName = req.queryParams("journalistName");
             String biography = req.queryParams("biography");
@@ -53,17 +63,42 @@ public class JournalistController {
             return new ModelAndView(model, "layout.vtl");
         }, new VelocityTemplateEngine());
 
-        //String flightNumber = req.queryParams("flightNumber");
-        //            String airline = req.queryParams("airline");
-        //            String departureAirport = req.queryParams("departureAirport");
-        //            String arrivalAirport = req.queryParams("arrivalAirport");
-        //
-        //            Flight newFlight = new Flight(flightNumber, airline, departureAirport, arrivalAirport );
-        //            flights.add(newFlight);
-        //            HashMap<String, Object> model = new HashMap<>();
-        //            model.put("flights", flights);
-        //            model.put("template", "flights.vtl");
-        //            return new ModelAndView(model, "layout.vtl");
+        post ("/journalists/:id/delete", (req, res) -> {
+            int intId = Integer.parseInt(req.params(":id"));
+            Journalist journalistToDelete = DBHelper.find(Journalist.class, intId);
+            DBHelper.delete(journalistToDelete);
+            res.redirect("/journalists");
+            return null;
+        }, new VelocityTemplateEngine());
+
+        get("/journalists/:id", (req, res) -> {
+            String strId = req.params(":id");
+            Integer intId = Integer.parseInt(strId);
+            Journalist journalist = DBHelper.find(Journalist.class, intId);
+            Map<String, Object> model = new HashMap<>();
+            model.put("journalist", journalist);
+            model.put("template", "templates/journalists/show.vtl");
+            return new ModelAndView(model, "templates/layout.vtl");
+        }, new VelocityTemplateEngine());
+
+
+//EDIT POST
+        post ("/journalists/:id", (req, res) -> {
+            String strId = req.params(":id");
+            Integer intId = Integer.parseInt(strId);
+            Journalist journalist = DBHelper.find(Journalist.class, intId);
+            String journalistName = req.queryParams("journalistName");
+            journalist.setJournalistName(journalistName);
+            String biography = req.queryParams("biography");
+            journalist.setBiography(biography);
+            DBHelper.update(journalist);
+            HashMap<String, Object> model = new HashMap<>();
+            res.redirect("/journalists");
+            return new ModelAndView(model, "layout.vtl");
+        }, new VelocityTemplateEngine());
+
+
+
     }
 }
 

@@ -1,0 +1,8 @@
+<p class="pageHeader">Edit Journalist</p>
+
+<form action="/journalists/$journalist.getId()" method="post">
+    <label for="title">Journalist:</label>
+    <input class="inputbox" type="text" name="journalistName" required="true" value="$journalist.getJournalistName()">
+    <input class="inputbox" type="text" name="biography" required="true" value="$journalist.getBiography()">
+    <input type="submit" value="Save" class="button">
+</form>
