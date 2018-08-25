@@ -33,18 +33,10 @@ public class JournalistController {
 
         get("/journalists", (req, res) -> {
             Map<String, Object> model = new HashMap<>();
-
             List<Journalist> journalists = DBHelper.getAll(Journalist.class);
 
-            Journalist ham = new Journalist("Ham", "The first monkey to be sent into space. According to Karl, when he pressed the 'left button' he gets a banana. Also, according to Karl, within the spaceship there are left, right, and reverse buttons");
-            journalists.add(ham);
-
-//            journalists.add(ham);
-
             model.put("template", "templates/journalists/index.vtl");
-
-//            model.put("ham", ham);
-
+            model.put("journalists", journalists);
             return new ModelAndView(model, "templates/layout.vtl");
         }, new VelocityTemplateEngine());
 

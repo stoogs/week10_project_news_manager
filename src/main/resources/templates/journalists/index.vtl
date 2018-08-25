@@ -2,3 +2,20 @@
 
 <a href="/journalists/new">New Journalist</a>
 
+
+<p class="pageHeader">Journalists</p>
+<div class="container">
+    <table>
+        <tr>
+            <th>Journalist: </th>
+            <th>Biography: </th>
+            <th></th>
+        </tr>
+        #foreach($journalist in $journalists)
+        <tr>
+            <td>$journalist.getJournalistName()</td>
+            <td>$journalist.getBiography()</td>
+        <tr>
+            #end
+    </table>
+</div>
