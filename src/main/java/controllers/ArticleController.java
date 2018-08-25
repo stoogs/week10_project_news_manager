@@ -82,14 +82,19 @@ public class ArticleController {
         }, new VelocityTemplateEngine());
 
         post ("/articles/:id", (req, res) -> {
-            String strId = req.params(":id");
-            Integer intId = Integer.parseInt(strId);
-            Article article = DBHelper.find(Article.class, intId);
-//            String articleName = req.queryParams("articleName");
-//            article.setJournalistName(articleName);
-//            String biography = req.queryParams("biography");
-//            article.setBiography(biography);
-            DBHelper.update(article);
+        int journalistId = Integer.parseInt(req.queryParams("journalist"));
+        int categoryId = Integer.parseInt(req.queryParams("category"));
+        int locationId = Integer.parseInt(req.queryParams("location"));
+        int timeStampId = Integer.parseInt(req.queryParams("timeStamp"));
+        String title = req.queryParams("title");
+        String headline = req.queryParams("headline");
+        String content = req.queryParams("content");
+        Journalist journalist = DBHelper.find(Journalist.class,journalistId);
+        Category category = DBHelper.find(Category.class,categoryId);
+        GregorianCalendar timeStamp = DBHelper.find(GregorianCalendar.class,timeStampId);
+        Location location = DBHelper.find(Location.class,locationId);
+        Article addArticle = new Article(title,journalist,category,location,timeStamp,headline,content);
+            DBHelper.update(addArticle);
             HashMap<String, Object> model = new HashMap<>();
             res.redirect("/articles");
             return new ModelAndView(model, "layout.vtl");
