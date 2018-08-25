@@ -25,16 +25,17 @@ public class JournalistController {
         //VelocityTemplateEngine velocityTemplateEngine = new VelocityTemplateEngine();
         //staticFileLocation("/public");
 //        ArrayList<Journalist> journalists = new ArrayList<>();
-        get("/journalists/:id/edit", (req, res) -> {
-            String strId = req.params(":id");
-            Integer intId = Integer.parseInt(strId);
-            Journalist editJournalist = DBHelper.find(Journalist.class, intId);
+
+        //INDEX
+        get("/journalists", (req, res) -> {
             Map<String, Object> model = new HashMap<>();
-            model.put("journalist", editJournalist);
-            model.put("template", "templates/journalists/edit.vtl");
+            List<Journalist> journalists = DBHelper.getAll(Journalist.class);
+            model.put("template", "templates/journalists/index.vtl");
+            model.put("journalists", journalists);
             return new ModelAndView(model, "templates/layout.vtl");
         }, new VelocityTemplateEngine());
 
+        //NEW
         get("/journalists/new", (req, res) -> {
             HashMap<String, Object> model = new HashMap<>();
             List<Journalist> newJournalists = DBHelper.getAll(Journalist.class);
@@ -43,14 +44,6 @@ public class JournalistController {
             return new ModelAndView(model, "templates/layout.vtl");
         }, new VelocityTemplateEngine());
 
-        get("/journalists", (req, res) -> {
-            Map<String, Object> model = new HashMap<>();
-            List<Journalist> journalists = DBHelper.getAll(Journalist.class);
-            model.put("template", "templates/journalists/index.vtl");
-            model.put("journalists", journalists);
-            return new ModelAndView(model, "templates/layout.vtl");
-        }, new VelocityTemplateEngine());
-//UPDATE
         post ("/journalists", (req, res) -> {
             String journalistName = req.queryParams("journalistName");
             String biography = req.queryParams("biography");
@@ -63,14 +56,18 @@ public class JournalistController {
             return new ModelAndView(model, "layout.vtl");
         }, new VelocityTemplateEngine());
 
-        post ("/journalists/:id/delete", (req, res) -> {
-            int intId = Integer.parseInt(req.params(":id"));
-            Journalist journalistToDelete = DBHelper.find(Journalist.class, intId);
-            DBHelper.delete(journalistToDelete);
-            res.redirect("/journalists");
-            return null;
+        //EDIT
+        get("/journalists/edit/:id", (req, res) -> {
+            String strId = req.params(":id");
+            Integer intId = Integer.parseInt(strId);
+            Journalist editJournalist = DBHelper.find(Journalist.class, intId);
+            Map<String, Object> model = new HashMap<>();
+            model.put("journalist", editJournalist);
+            model.put("template", "templates/journalists/edit.vtl");
+            return new ModelAndView(model, "templates/layout.vtl");
         }, new VelocityTemplateEngine());
 
+        //UPDATE
         get("/journalists/:id", (req, res) -> {
             String strId = req.params(":id");
             Integer intId = Integer.parseInt(strId);
@@ -81,8 +78,6 @@ public class JournalistController {
             return new ModelAndView(model, "templates/layout.vtl");
         }, new VelocityTemplateEngine());
 
-
-//EDIT POST
         post ("/journalists/:id", (req, res) -> {
             String strId = req.params(":id");
             Integer intId = Integer.parseInt(strId);
@@ -97,7 +92,15 @@ public class JournalistController {
             return new ModelAndView(model, "layout.vtl");
         }, new VelocityTemplateEngine());
 
-
+        //DELETE
+        get ("/journalists/delete/:id", (req, res) -> {
+            String strId = req.params(":id");
+            Integer intId = Integer.parseInt(strId);
+            Journalist journalistToDelete = DBHelper.find(Journalist.class, intId);
+            DBHelper.delete(journalistToDelete);
+            res.redirect("/journalists");
+            return null;
+        }, new VelocityTemplateEngine());
 
     }
 }

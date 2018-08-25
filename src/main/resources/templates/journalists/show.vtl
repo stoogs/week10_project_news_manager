@@ -1,3 +1,20 @@
-<h2>Welcome to Journalist Show.vtl</h2>
-$journalist.getJournalistName() ,
-$journalist.getBiography()
+<h2>Journalist/show.vtl</h2>
+
+<table>
+    <tr>
+        <th>Edit</th>
+        <th>Delete</th>
+        <th>Journalist: </th>
+        <th>Biography: </th>
+
+        <th></th>
+    </tr>
+    <tr>
+        <td><a href="/journalists/edit/$journalist.getId()" class="button center">Edit</a>
+        <td><a href="/journalists/delete/$journalist.getId()" class="button center">Delete</a>
+        <td>$journalist.getJournalistName()</td>
+        <td>$journalist.getBiography()</td>
+    </tr>
+</table>
+<br><br>
+<a href="/journalists">Back To Journalists</a>

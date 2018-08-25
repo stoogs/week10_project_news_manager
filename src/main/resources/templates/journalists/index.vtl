@@ -18,9 +18,9 @@
         </tr>
         #foreach($journalist in $journalists)
         <tr>
-            <td><a href="/journalists/$journalist.getId()/edit" class="button center">Edit</a>
+            <td><a href="/journalists/edit/$journalist.getId()" class="button center">Edit</a>
             <td><a href="/journalists/$journalist.getId()" class="button center">Show</a>
-            <td><a href="/journalists/$journalist.getId()/delete" class="button center">Delete</a>
+            <td><a href="/journalists/delete/$journalist.getId()" class="button center">Delete</a>
             <td>$journalist.getJournalistName()</td>
             <td>$journalist.getBiography()</td>
         <tr>
