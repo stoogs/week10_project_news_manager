@@ -22,7 +22,6 @@ public class Category {
         this.id = id;
         this.categoryName = categoryName;
 //        this.categoryArticles = new List<Article>();
-
 //        TODO: add array of articles
     }
 

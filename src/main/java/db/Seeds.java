@@ -5,12 +5,16 @@ import models.Article;
 import models.Category;
 import models.Journalist;
 import models.Location;
+import org.apache.commons.lang.ObjectUtils;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
 import java.util.Calendar;
+import java.util.Comparator;
 import java.util.Date;
 import java.util.GregorianCalendar;
+
 
 public class Seeds {
     public static void seedData() {
@@ -71,10 +75,9 @@ public class Seeds {
         Location locationZoo = new Location("Zoo");
         DBHelper.save(locationZoo);
 
-
         // -------------------------Seed Time & Date----------------------------------------------------------
         GregorianCalendar currentTimeAndDate = new GregorianCalendar();
-        GregorianCalendar dateS01E01 = new GregorianCalendar(2005, 11, 5, 16, 30, 00);
+        GregorianCalendar dateS01E01 = new GregorianCalendar(2018, 7, 25, 07, 35, 00);
         GregorianCalendar dateS01E02 = new GregorianCalendar(2005, 11, 12, 16, 30, 00);
         GregorianCalendar dateS01E03 = new GregorianCalendar(2005, 11, 19, 16, 30, 00);
         GregorianCalendar dateS01E04 = new GregorianCalendar(2005, 11, 26, 16, 30, 00);
@@ -86,7 +89,6 @@ public class Seeds {
         GregorianCalendar dateS01E10 = new GregorianCalendar(2006, 1, 6, 16, 30, 00);
         GregorianCalendar dateS01E011 = new GregorianCalendar(2006, 1, 13, 16, 30, 00);
         GregorianCalendar dateS01E012 = new GregorianCalendar(2006, 1, 20, 16, 30, 00);
-        GregorianCalendar tester = new GregorianCalendar();
 
         // -------------------------Seed Article---------------------------------------------------
         Article articles01e01 = new Article("Monkey In space", alfredTheMonkey, categoryOuterSpace, locationOuterSpace, dateS01E01,
@@ -120,15 +122,72 @@ public class Seeds {
         Article articles01e08 = new Article("Monkey Winter Olympics", alfredTheMonkey, categoryObituary, locationWorld, dateS01E08,
                 "Monkey crashes bobsled during Winter Olympics...", "Monkey crashes bobsled during Winter Olympics because of photographers' cameras flashes, is taken by an ambulance, ends up in zoo with some sort of neck guard");
         DBHelper.save(articles01e08);
-
         //------------------------------TEST METHODS-----------------------------
         //Calculate age of any story.
-        String testDateMethod = storyAge(dateS01E01);
-        System.out.println(testDateMethod);
-
+        //storyAge(dateS01E01);
+        storyAgeSimple(dateS01E01);
+        storyAgeSimple(dateS01E02);
+        storyAgeSimple(currentTimeAndDate);
         // Print Current Time
         //System.out.println(tester.getTime());
+    }
         //-----------------------------------------------------------------------
+        public static String storyAge(GregorianCalendar article) {
+            GregorianCalendar currentTime = new GregorianCalendar();
+            System.out.println(article.get(Calendar.WEEK_OF_MONTH));
+            int articleYearsOld = (currentTime.get(Calendar.YEAR) - article.get(Calendar.YEAR));
+            int articleWeeksOld = (currentTime.get(Calendar.WEEK_OF_YEAR) - article.get(Calendar.WEEK_OF_YEAR) + 52);
+            int articleDaysOld = currentTime.get(Calendar.DAY_OF_WEEK) - article.get(Calendar.DAY_OF_WEEK);
+            String result = articleYearsOld + " years " + articleWeeksOld + " weeks " + articleDaysOld + " days old";
+            System.out.println(result);
+            return result;
+        }
+
+        public static String storyAgeSimple(GregorianCalendar article) {
+            GregorianCalendar currentTime = new GregorianCalendar();
+            String storyAgeSimple = new String();
+            int articleYearsOld = (currentTime.get(Calendar.YEAR) - article.get(Calendar.YEAR));
+            int articleWeeksOld = (currentTime.get(Calendar.WEEK_OF_YEAR) - article.get(Calendar.WEEK_OF_YEAR));
+            int articleDaysOld = currentTime.get(Calendar.DAY_OF_WEEK) - article.get(Calendar.DAY_OF_WEEK);
+            int articleHoursOld = currentTime.get(Calendar.HOUR_OF_DAY) - article.get(Calendar.HOUR_OF_DAY);
+            int articleMinutesOld = currentTime.get(Calendar.MINUTE) - article.get(Calendar.MINUTE);
+
+            if (articleYearsOld > 0) {
+                storyAgeSimple += (articleYearsOld + " years ago");}
+            else
+            if (articleWeeksOld > 0 ) {
+                storyAgeSimple +=(articleWeeksOld + " week(s) ago");}
+            else
+            if (articleDaysOld > 0){
+                storyAgeSimple +=(articleDaysOld + " day(s) ago");}
+            else
+            if (articleHoursOld > 0){
+                storyAgeSimple += (articleHoursOld + " hour(s) ago.");}
+            else
+            if (articleMinutesOld > 0){
+                storyAgeSimple += (articleMinutesOld + " minute(s) ago.");}
+            else
+            if (articleMinutesOld != 0 ){
+                storyAgeSimple += (" Just Added!");
+            }
+            else
+                storyAgeSimple += ("Milliseconds old.");
+
+            System.out.println(storyAgeSimple);
+            return storyAgeSimple;
+
+        }
+}
+
+
+
+
+
+
+
+
+
+
 
 //        int yearsSince1 = dateS01E01.get(Calendar.YEAR);
 //        int yearsSince2 = currentTimeAndDate.get(Calendar.YEAR);
@@ -148,6 +207,18 @@ public class Seeds {
 
 
         //--------------------------------TIME EXPERIMENTS--------------------------
+        //---------------LOCAL DATE TIME-----------------------------
+//        LocalDateTime lpd1 = LocalDateTime.now();
+//        System.out.println("-------------------");
+//        System.out.println(lpd1);
+//        LocalDateTime ldtTest = LocalDateTime.of(2015,11,05,16,23);
+//        LocalDateTime ldtTest2 = LocalDateTime.of(2014,11,30,10,23);
+//        System.out.println(ldtTest);
+//        System.out.println(ldtTest.getMonthValue());
+//        int newwww = ldtTest.compareTo(ldtTest2);
+//        System.out.println(newwww );
+
+        //------------------------------DATE ------------------------
         //Date currentDateDate = new Date();
         //Date myDate = parseDate("2014-12-25 13:45");
         //Date dateS01E01 = parseDate("2005-12-05 17:55");
@@ -174,17 +245,26 @@ public class Seeds {
 //        long diffInMinutes = date2.getTime() - date1.getTime();
 //        return timeUnit.convert(diffInMinutes,TimeUnit.MINUTES);
 //    }
-    }
 
-    public static String storyAge(GregorianCalendar article) {
-    GregorianCalendar currentTime = new GregorianCalendar();
-        System.out.println(currentTime.getTime());
-        System.out.println(article.get(Calendar.WEEK_OF_MONTH));
-        int articleYearsOld = (currentTime.get(Calendar.YEAR) - article.get(Calendar.YEAR));
-        int articleWeeksOld = (currentTime.get(Calendar.WEEK_OF_YEAR) - article.get(Calendar.WEEK_OF_YEAR)+52);
-        int articleDaysOld = currentTime.get(Calendar.DAY_OF_WEEK) - article.get(Calendar.DAY_OF_WEEK);
-        String result = result = articleYearsOld + " years " + articleWeeksOld + " weeks " + articleDaysOld +" days old";
-        return result;
-    }
 
-}
+//get years since
+//get months since
+//get weeks since
+//get days since
+//PRINT RESULT ALONGSIDE STORY
+//if calendar years since is >0
+//then string = story over a year old
+//else
+//if month > 0
+//then string = story over a month old
+//else
+//if week >0
+//then string story over a week old
+//else
+//if days >0 story x days old
+//else
+//if hours >0 then story x hours old
+//else
+//if minutes > 0 then story is x minutes old.
+//end
+//​
