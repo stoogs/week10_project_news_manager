@@ -74,16 +74,16 @@ public class Seeds {
 
         // -------------------------Seed Time & Date----------------------------------------------------------
         GregorianCalendar currentTimeAndDate = new GregorianCalendar();
-        GregorianCalendar dateS01E01 = new GregorianCalendar(2018, 7, 25, 07, 35, 00);
-        GregorianCalendar dateS01E02 = new GregorianCalendar(2005, 11, 12, 16, 30, 00);
-        GregorianCalendar dateS01E03 = new GregorianCalendar(2005, 11, 19, 16, 30, 00);
-        GregorianCalendar dateS01E04 = new GregorianCalendar(2005, 11, 26, 16, 30, 00);
-        GregorianCalendar dateS01E05 = new GregorianCalendar(2006, 0, 2, 16, 30, 00);
-        GregorianCalendar dateS01E06 = new GregorianCalendar(2006, 0, 9, 16, 30, 00);
-        GregorianCalendar dateS01E07 = new GregorianCalendar(2006, 0, 16, 16, 30, 00);
-        GregorianCalendar dateS01E08 = new GregorianCalendar(2006, 0, 23, 16, 30, 00);
-        GregorianCalendar dateS01E09 = new GregorianCalendar(2006, 0, 30, 16, 30, 00);
-        GregorianCalendar dateS01E10 = new GregorianCalendar(2006, 1, 6, 16, 30, 00);
+        GregorianCalendar dateS01E01 = new GregorianCalendar(2018, 7, 03, 07, 35, 00);
+        GregorianCalendar dateS01E02 = new GregorianCalendar(2018, 04, 12, 16, 30, 00);
+        GregorianCalendar dateS01E03 = new GregorianCalendar(2017, 11, 19, 16, 30, 00);
+        GregorianCalendar dateS01E04 = new GregorianCalendar(2018, 03, 22, 16, 30, 00);
+        GregorianCalendar dateS01E05 = new GregorianCalendar(2018, 7, 2, 16, 30, 00);
+        GregorianCalendar dateS01E06 = new GregorianCalendar(2018, 7, 9, 16, 30, 00);
+        GregorianCalendar dateS01E07 = new GregorianCalendar(2018, 7, 16, 16, 30, 00);
+        GregorianCalendar dateS01E08 = new GregorianCalendar(2018, 7, 20, 16, 30, 00);
+        GregorianCalendar dateS01E09 = new GregorianCalendar(2018, 7, 24, 16, 30, 00);
+        GregorianCalendar dateS01E10 = new GregorianCalendar(2018, 4, 6, 16, 30, 00);
         GregorianCalendar dateS01E011 = new GregorianCalendar(2006, 1, 13, 16, 30, 00);
         GregorianCalendar dateS01E012 = new GregorianCalendar(2006, 1, 20, 16, 30, 00);
 
@@ -124,7 +124,6 @@ public class Seeds {
         List<Journalist> journalists = DBHelper.getAll(Journalist.class);
 
         journalists.add(ham);
-        System.out.println(journalists);
 
 
         //------------------------------TEST METHODS-----------------------------
@@ -137,7 +136,7 @@ public class Seeds {
         //System.out.println(tester.getTime());
         //Doesnt work, returns Null
         List<Article> journalistsStories = DBArticle.getArticleJournalists(ollieTheChimp);
-        System.out.println(journalistsStories);
+//        System.out.println(journalistsStories);
         //Gets all Articles
         List<Article> journalistArticles = DBHelper.getAll(Journalist.class);
         //null
@@ -145,7 +144,7 @@ public class Seeds {
 //        List<Article> journalistArticless = DBHelper.find(Journalist.class,id);
 //        System.out.println(journalistArticless);
         String resultOfDateCall = Seeds.storyAgeSimple(articles01e01.getTimeStamp());
-        System.out.println(resultOfDateCall);
+//        System.out.println(resultOfDateCall);
     }
 
         //-----------------------------------------------------------------------
@@ -153,10 +152,16 @@ public class Seeds {
         GregorianCalendar currentTime = new GregorianCalendar();
             System.out.println(article.get(Calendar.WEEK_OF_MONTH));
             int articleYearsOld = (currentTime.get(Calendar.YEAR) - article.get(Calendar.YEAR));
-            int articleWeeksOld = (currentTime.get(Calendar.WEEK_OF_YEAR) - article.get(Calendar.WEEK_OF_YEAR) + 52);
-            int articleDaysOld = currentTime.get(Calendar.DAY_OF_WEEK) - article.get(Calendar.DAY_OF_WEEK);
-            String result = articleYearsOld + " years " + articleWeeksOld + " weeks " + articleDaysOld + " days old";
-            System.out.println(result);
+            int articleMonthsOld = (currentTime.get(Calendar.MONTH) - article.get(Calendar.MONTH));
+            int articleWeeksOld = (currentTime.get(Calendar.WEEK_OF_YEAR) - article.get(Calendar.WEEK_OF_YEAR));
+            int articleDaysOld = (currentTime.get(Calendar.DAY_OF_WEEK) - article.get(Calendar.DAY_OF_WEEK));
+            //If current Time is behind Article time then -ve values occur.
+            //TODO This is chaos
+            if (articleYearsOld > 0) { articleYearsOld += -1;}
+            if (articleWeeksOld > 0) { articleWeeksOld += -52;}
+            if (articleMonthsOld > 0) { articleMonthsOld += -12;}
+            if (articleDaysOld > 0) { articleDaysOld += -7;}
+            String result = articleYearsOld  + " years " + articleMonthsOld + " months " + articleDaysOld + " days old";
             return result;
         }
 
@@ -168,20 +173,24 @@ public class Seeds {
             int articleDaysOld = currentTime.get(Calendar.DAY_OF_WEEK) - article.get(Calendar.DAY_OF_WEEK);
             int articleHoursOld = currentTime.get(Calendar.HOUR_OF_DAY) - article.get(Calendar.HOUR_OF_DAY);
             int articleMinutesOld = currentTime.get(Calendar.MINUTE) - article.get(Calendar.MINUTE);
+            int articleMonthsOld = currentTime.get(Calendar.MONTH) - article.get(Calendar.MONTH);
 
             if (articleYearsOld > 0) {
                 storyAgeSimple += (articleYearsOld + " years ago");}
             else
-            if (articleWeeksOld > 0 ) {
+            if (articleMonthsOld > 0 && articleMonthsOld < 12 ) {
+                storyAgeSimple +=(articleMonthsOld + " month(s) ago");}
+            else
+            if (articleWeeksOld > 0 && articleWeeksOld < 53 ) {
                 storyAgeSimple +=(articleWeeksOld + " week(s) ago");}
             else
-            if (articleDaysOld > 0){
+            if (articleDaysOld > 0 && articleDaysOld <32 ){
                 storyAgeSimple +=(articleDaysOld + " day(s) ago");}
             else
-            if (articleHoursOld > 0){
+            if (articleHoursOld > 0 && articleHoursOld < 24 ){
                 storyAgeSimple += (articleHoursOld + " hour(s) ago.");}
             else
-            if (articleMinutesOld > 0){
+            if (articleMinutesOld > 0 && articleMinutesOld < 60){
                 storyAgeSimple += (articleMinutesOld + " minute(s) ago.");}
             else
             if (articleMinutesOld != 0 ){

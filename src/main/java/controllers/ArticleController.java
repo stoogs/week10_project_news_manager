@@ -26,10 +26,11 @@ public class ArticleController {
             Map<String, Object> model = new HashMap<>();
             ArrayList<String> stringTimes = new ArrayList<>();
             List<Article> articles = DBHelper.getAll(Article.class);
+            //Create Array of times from Articles
             for (Article article : articles){
             String time = Seeds.storyAgeSimple(article.getTimeStamp());
-            stringTimes.add(time);
-            }
+            stringTimes.add(time); }
+
             model.put("articles", articles);
             model.put("stringTimes", stringTimes);
             model.put("template", "templates/articles/index.vtl");
