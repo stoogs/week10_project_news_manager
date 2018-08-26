@@ -1,0 +1,33 @@
+<p class="pageHeader">New Article</p>
+
+<form action="/articles" method="post">
+    <label for="title">Title:</label>
+    <input type="text" class="inputbox" name="title" required="true" >
+    <label for="title">Headline:</label>
+    <input type="text" class="inputbox" name="headline" required="true">
+    <label for="title">Content:</label>
+    <input type="text" class="inputbox" name="content" required="true">
+
+    <label for="journalist">Journalist:</label>
+    <select id="journalist" name="journalist" >
+        #foreach( $journalist in $journalists )
+        <option value="$journalist.getId()">$journalist.getJournalistName()</option>
+        #end
+    </select>
+
+    <br>
+    <label for="category">Category</label>
+    <select id="category" name="category">
+        #foreach( $category in $categories )
+        <option value="$category.getId()">$category.getCategoryName()</option>
+        #end
+    </select>
+    <br>
+    <label for="location">Location</label>
+    <select id="location" name="location">
+        #foreach( $location in $locations )
+        <option value="$location.getId()">$location.getLocationName()</option>
+        #end
+    </select>
+    <br><input type="submit" value="Save" class="button">
+</form>

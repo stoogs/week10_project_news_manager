@@ -131,14 +131,16 @@ public class Seeds {
         //Calculate age of any story.
         //storyAge(dateS01E01);
         storyAgeSimple(dateS01E01);
-        storyAgeSimple(dateS01E02);
+        storyAgeSimple(articles01e01.getTimeStamp());
         storyAgeSimple(currentTimeAndDate);
         // Print Current Time
         //System.out.println(tester.getTime());
+
     }
+
         //-----------------------------------------------------------------------
         public static String storyAge(GregorianCalendar article) {
-            GregorianCalendar currentTime = new GregorianCalendar();
+        GregorianCalendar currentTime = new GregorianCalendar();
             System.out.println(article.get(Calendar.WEEK_OF_MONTH));
             int articleYearsOld = (currentTime.get(Calendar.YEAR) - article.get(Calendar.YEAR));
             int articleWeeksOld = (currentTime.get(Calendar.WEEK_OF_YEAR) - article.get(Calendar.WEEK_OF_YEAR) + 52);

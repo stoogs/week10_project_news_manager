@@ -43,7 +43,7 @@ public class JournalistController {
             model.put("template", "templates/journalists/create.vtl");
             return new ModelAndView(model, "templates/layout.vtl");
         }, new VelocityTemplateEngine());
-
+//CREATE NEW
         post ("/journalists", (req, res) -> {
             String journalistName = req.queryParams("journalistName");
             String biography = req.queryParams("biography");

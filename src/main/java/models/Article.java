@@ -57,6 +57,7 @@ public class Article {
         this.headline = headline;
         this.content = content;
         this.timeStamp = timeStamp;
+
     }
 
     public int getId() {
