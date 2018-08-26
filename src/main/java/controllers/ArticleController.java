@@ -68,7 +68,7 @@ public class ArticleController {
             DBHelper.save(newArticle);
             HashMap<String, Object> model = new HashMap<>();
             res.redirect("/articles");
-            return new ModelAndView(model, "layout.vtl");
+            return new ModelAndView(model, "templates/layout.vtl");
         }, new VelocityTemplateEngine());
 
         //EDIT FORM
@@ -91,28 +91,41 @@ public class ArticleController {
             model.put("categories", categories);
             //send array of existing locations to DDMB
             model.put("locations", locations);
-
             model.put("article", editArticle);
             model.put("template", "templates/articles/edit.vtl");
             return new ModelAndView(model, "templates/layout.vtl");
         }, new VelocityTemplateEngine());
 
+        //SHOW BY ID
+        get("/articles/:id", (req, res) -> {
+            String strId = req.params(":id");
+            Integer intId = Integer.parseInt(strId);
+            Article article = DBHelper.find(Article.class, intId);
+            Map<String, Object> model = new HashMap<>();
+            model.put("article", article);
+            model.put("template", "templates/articles/show.vtl");
+            return new ModelAndView(model, "templates/layout.vtl");
+        }, new VelocityTemplateEngine());
 
         //POST EDIT FORM
-        post ("/articles/:id", (req, res) -> {
+        post ("/articles/edit/:id", (req, res) -> {
         String strId = req.params(":id");
         Integer intId = Integer.parseInt(strId);
+        //Load article fro id to edit
         Article article = DBHelper.find(Article.class, intId);
+//        Get details from DB
         int journalistId = Integer.parseInt(req.queryParams("journalist"));
+        Journalist journalist = DBHelper.find(Journalist.class,journalistId);
         int categoryId = Integer.parseInt(req.queryParams("category"));
+        Category category = DBHelper.find(Category.class,categoryId);
         int locationId = Integer.parseInt(req.queryParams("location"));
+        Location location = DBHelper.find(Location.class,locationId);
+        //Pull details from get forms
         String title = req.queryParams("title");
         String headline = req.queryParams("headline");
         String content = req.queryParams("content");
-        Journalist journalist = DBHelper.find(Journalist.class,journalistId);
-        Category category = DBHelper.find(Category.class,categoryId);
+        //timestamp current time
         GregorianCalendar timeStamp = new GregorianCalendar();
-        Location location = DBHelper.find(Location.class,locationId);
         article.setTitle(title);
         article.setHeadline(headline);
         article.setContent(content);
@@ -120,11 +133,10 @@ public class ArticleController {
         article.setCategory(category);
         article.setTimeStamp(timeStamp);
         article.setLocation(location);
-        //Article addArticle = new Article(title,journalist,category,location,timeStamp,headline,content);
             DBHelper.update(article);
             HashMap<String, Object> model = new HashMap<>();
             res.redirect("/articles");
-            return new ModelAndView(model, "layout.vtl");
+            return null;
         }, new VelocityTemplateEngine());
 
         //DELETE

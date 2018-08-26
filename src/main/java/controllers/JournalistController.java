@@ -67,7 +67,7 @@ public class JournalistController {
             return new ModelAndView(model, "templates/layout.vtl");
         }, new VelocityTemplateEngine());
 
-        //UPDATE
+        //UPDATE - SHOW
         get("/journalists/:id", (req, res) -> {
             String strId = req.params(":id");
             Integer intId = Integer.parseInt(strId);
