@@ -46,6 +46,9 @@ public class Article {
     @Column(name = "time_stamp")
     private GregorianCalendar timeStamp;
 
+    @Column(name = "counter")
+    private int counter;
+
     public Article() {
     }
 
@@ -58,7 +61,7 @@ public class Article {
         this.headline = headline;
         this.content = content;
         this.timeStamp = timeStamp;
-
+        this.counter = counter;
     }
 
     public int getId() {
@@ -125,5 +128,12 @@ public class Article {
         this.timeStamp = timeStamp;
     }
 
+    public int getCounter() {
+        return counter;
     }
+
+    public void setCounter(int counter) {
+        this.counter = counter;
+    }
+}
 

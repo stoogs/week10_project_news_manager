@@ -107,6 +107,17 @@ public class ArticleController {
             String strId = req.params(":id");
             Integer intId = Integer.parseInt(strId);
             Article article = DBHelper.find(Article.class, intId);
+
+            //Add Counter to Articles.
+            int counter = article.getCounter();
+            System.out.println(counter);
+            counter = counter +1;
+            article.setCounter(counter);
+            DBHelper.update(article);
+
+//            articleCounter += 1;
+//            article.setCounter(articleCounter);
+//            System.out.println(article.getCounter());
             //Get date of article
             String storyAgeSimple = Seeds.storyAgeSimple(article.getTimeStamp());
             String storyAge = Seeds.storyAgeSimple(article.getTimeStamp());
@@ -114,6 +125,7 @@ public class ArticleController {
             model.put("storyAge", storyAge);
             model.put("storyAgeSimple", storyAgeSimple);
             model.put("article", article);
+            model.put("counter", counter);
             model.put("template", "templates/articles/show.vtl");
             return new ModelAndView(model, "templates/layout.vtl");
         }, new VelocityTemplateEngine());
