@@ -28,6 +28,15 @@ public class CategoryController {
             return new ModelAndView(model, "templates/layout.vtl");
         }, new VelocityTemplateEngine());
 
+//        NEW
+        get("/categories/new", (req, res) -> {
+            Map<String, Object> model = new HashMap<>();
+            List<Category> categoryList = DBHelper.getAll(Category.class);
+            model.put("categories", categoryList);
+            model.put("template", "templates/categories/create.vtl");
+            return new ModelAndView(model, "templates/layout.vtl");
+        }, new VelocityTemplateEngine());
+
 //        SHOW
         get("/categories/:id", (req, res) -> {
             String strId = req.params(":id");
@@ -40,18 +49,11 @@ public class CategoryController {
         }, new VelocityTemplateEngine());
 
 
-//        NEW
-        get("/categories/new", (req, res) -> {
-            Map<String, Object> model = new HashMap<>();
-            List<Category> categoryList = DBHelper.getAll(Category.class);
-            model.put("catergories", categoryList);
-            model.put("template", "templates/categories/create.vtl");
-            return new ModelAndView(model, "templates/layout.vtl");
-        }, new VelocityTemplateEngine());
+
 
         post("/categories", (req, res) -> {
-            String catergoryName = req.queryParams("categoryName");
-            Category addCategory = new Category(catergoryName);
+            String categoryName = req.queryParams("categoryName");
+            Category addCategory = new Category(categoryName);
             System.out.println(addCategory);
             DBHelper.save(addCategory);
             HashMap<String, Object> model = new HashMap<>();
