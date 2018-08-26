@@ -4,6 +4,7 @@ import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
 
@@ -123,4 +124,6 @@ public class Article {
     public void setTimeStamp(GregorianCalendar timeStamp) {
         this.timeStamp = timeStamp;
     }
-}
+
+    }
+

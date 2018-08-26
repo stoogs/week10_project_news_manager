@@ -135,7 +135,17 @@ public class Seeds {
         storyAgeSimple(currentTimeAndDate);
         // Print Current Time
         //System.out.println(tester.getTime());
-
+        //Doesnt work, returns Null
+        List<Article> journalistsStories = DBArticle.getArticleJournalists(ollieTheChimp);
+        System.out.println(journalistsStories);
+        //Gets all Articles
+        List<Article> journalistArticles = DBHelper.getAll(Journalist.class);
+        //null
+//        int id = ham.getId();
+//        List<Article> journalistArticless = DBHelper.find(Journalist.class,id);
+//        System.out.println(journalistArticless);
+        String resultOfDateCall = Seeds.storyAgeSimple(articles01e01.getTimeStamp());
+        System.out.println(resultOfDateCall);
     }
 
         //-----------------------------------------------------------------------
@@ -182,8 +192,10 @@ public class Seeds {
 
             System.out.println(storyAgeSimple);
             return storyAgeSimple;
-
         }
+
+
+
 }
 
 

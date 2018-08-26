@@ -17,8 +17,11 @@
             <th>TimeStamp: </th>
             <th>Headline: </th>
             <th>Content: </th>
+            <th>Test Time: </th>
         </tr>
+        #set($counter = 0)
         #foreach($article in $articles)
+
         <tr>
             <td><a href="/articles/edit/$article.getId()" class="button center">Edit</a>
             <td><a href="/articles/$article.getId()" class="button center">Show</a>
@@ -30,7 +33,11 @@
             <td>$article.getTimeStamp().getWeekYear()</td>
             <td>$article.getHeadline() </td>
             <td>$article.getContent() </td>
+            <td>$stringTimes[$counter]</td>
         <tr>
-            #end
+        #set($counter = $counter + 1)
+        #end
     </table>
+
+
 </div>

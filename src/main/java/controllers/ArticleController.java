@@ -1,15 +1,14 @@
 package controllers;
 
+import db.DBArticle;
 import db.DBHelper;
+import db.Seeds;
 import models.*;
 import models.Article;
 import spark.ModelAndView;
 import spark.template.velocity.VelocityTemplateEngine;
 
-import java.util.GregorianCalendar;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 import static spark.Spark.get;
 import static spark.Spark.post;
@@ -25,9 +24,15 @@ public class ArticleController {
 //        INDEX
         get("/articles", (req, res) -> {
             Map<String, Object> model = new HashMap<>();
+            ArrayList<String> stringTimes = new ArrayList<>();
             List<Article> articles = DBHelper.getAll(Article.class);
-            model.put("template", "templates/articles/index.vtl");
+            for (Article article : articles){
+            String time = Seeds.storyAgeSimple(article.getTimeStamp());
+            stringTimes.add(time);
+            }
             model.put("articles", articles);
+            model.put("stringTimes", stringTimes);
+            model.put("template", "templates/articles/index.vtl");
             return new ModelAndView(model, "templates/layout.vtl");
         }, new VelocityTemplateEngine());
 //NEW
@@ -101,7 +106,12 @@ public class ArticleController {
             String strId = req.params(":id");
             Integer intId = Integer.parseInt(strId);
             Article article = DBHelper.find(Article.class, intId);
+            //Get date of article
+            String storyAgeSimple = Seeds.storyAgeSimple(article.getTimeStamp());
+            String storyAge = Seeds.storyAgeSimple(article.getTimeStamp());
             Map<String, Object> model = new HashMap<>();
+            model.put("storyAge", storyAge);
+            model.put("storyAgeSimple", storyAgeSimple);
             model.put("article", article);
             model.put("template", "templates/articles/show.vtl");
             return new ModelAndView(model, "templates/layout.vtl");
@@ -149,4 +159,6 @@ public class ArticleController {
             return null;
         }, new VelocityTemplateEngine());
     }
+
+
 }
