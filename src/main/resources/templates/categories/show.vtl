@@ -1,10 +1,8 @@
 <a href="/categories">Back To Categories</a>
 
 <div class="container">
+    <h3>Category: $categoryCategory</h3>
     <table>
-        <tr>
-            <th>Categories: </th>
-        </tr>
             #foreach($article in $categoryArticles)
         <tr>
             <td><a>$article.getTitle()</a></td>
