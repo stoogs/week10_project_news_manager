@@ -138,7 +138,10 @@ public class Seeds {
         List<Article> journalistsStories = DBArticle.getArticleJournalists(ollieTheChimp);
 //        System.out.println(journalistsStories);
         //Gets all Articles
+        System.out.println(journalistsStories);
         List<Article> journalistArticles = DBHelper.getAll(Journalist.class);
+        List<Article> articlesByAgeDesc = DBArticle.orderArticlesByAgeDesc();
+        System.out.println(articlesByAgeDesc);
         //null
 //        int id = ham.getId();
 //        List<Article> journalistArticless = DBHelper.find(Journalist.class,id);
