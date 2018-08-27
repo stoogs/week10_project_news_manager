@@ -30,7 +30,6 @@ public class Article {
     @JoinColumn(name = "category_id", nullable = false)
     private Category category;
 
-    //    TODO: add many to one - location
     @ManyToOne
     @JoinColumn(name = "location_id", nullable = false)
     private Location location;

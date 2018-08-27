@@ -18,19 +18,18 @@ public class DBCategory {
 
     public static List<Article> getArticlesByCategory(Category category){
         session = HibernateUtil.getSessionFactory().openSession();
-        List<Article> articles = null;
+        List<Article> categoryArticles = null;
         try{
             transaction = session.beginTransaction();
-            Criteria cr = session.createCriteria(Category.class);
-            cr.createAlias("category", "category");
-            cr.add(Restrictions.eq("article.category_id", category.getId()));
-            articles = cr.list();
+            Criteria cr = session.createCriteria(Article.class);
+            cr.add(Restrictions.eq("category", category));
+            categoryArticles = cr.list();
         } catch (HibernateException e){
             transaction.rollback();
             e.printStackTrace();
         } finally {
             session.close();
-        } return articles;
+        } return categoryArticles;
     }
 
 
