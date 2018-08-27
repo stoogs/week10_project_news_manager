@@ -125,6 +125,10 @@ public class Seeds {
 
         journalists.add(ham);
 
+
+        List<Article> test = categoryFakeNews.getCategoryArticles();
+
+
        List<Article> testArticles = DBCategory.getArticlesByCategory(categoryFakeNews);
         //------------------------------TEST METHODS-----------------------------
         //Calculate age of any story.
