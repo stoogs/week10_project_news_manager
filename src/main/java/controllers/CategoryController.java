@@ -7,7 +7,6 @@ import models.Category;
 import spark.ModelAndView;
 import spark.template.velocity.VelocityTemplateEngine;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -45,8 +44,10 @@ public class CategoryController {
             String strId = req.params(":id");
             Integer intId = Integer.parseInt(strId);
             Category category = DBHelper.find(Category.class, intId);
+            String categoryCategory = category.getCategoryName();
             List<Article> categoryArticles = DBCategory.getArticlesByCategory(category);
             Map<String, Object> model = new HashMap<>();
+            model.put("categoryCategory", categoryCategory);
             model.put("categories", category);
             model.put("categoryArticles", categoryArticles);
             model.put("template", "templates/categories/show.vtl");
