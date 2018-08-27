@@ -164,6 +164,8 @@ public class Seeds {
 //        System.out.println(journalistArticless);
         String resultOfDateCall = Seeds.storyAgeSimple(articles01e01.getTimeStamp());
 //        System.out.println(resultOfDateCall);
+        List<Article> hamArticles = DBJournalist.getArticlesByJournalist(ham);
+
     }
 
         //-----------------------------------------------------------------------
