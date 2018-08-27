@@ -21,12 +21,11 @@ public class Article {
     @Column(name = "title")
     private String title;
 
-//    TODO: add many to one - journalist
+
     @ManyToOne
     @JoinColumn(name = "journalist_id", nullable = false)
     private Journalist journalist;
 
-    //    TODO: add many to one - category
     @ManyToOne
     @JoinColumn(name = "category_id", nullable = false)
     private Category category;

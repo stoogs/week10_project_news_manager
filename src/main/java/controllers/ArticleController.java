@@ -25,7 +25,9 @@ public class ArticleController {
         get("/articles", (req, res) -> {
             Map<String, Object> model = new HashMap<>();
             ArrayList<String> stringTimes = new ArrayList<>();
-            List<Article> articles = DBHelper.getAll(Article.class);
+            List<Article> articles = DBArticle.orderArticlesByAgeDesc();
+
+           // List<Article> articles = DBHelper.getAll(Article.class);
             //Create Array of times from Articles
             for (Article article : articles){
             String time = Seeds.storyAgeSimple(article.getTimeStamp());
