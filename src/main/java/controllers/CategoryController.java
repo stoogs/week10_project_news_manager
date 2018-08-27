@@ -1,10 +1,13 @@
 package controllers;
 
+import db.DBCategory;
 import db.DBHelper;
+import models.Article;
 import models.Category;
 import spark.ModelAndView;
 import spark.template.velocity.VelocityTemplateEngine;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -42,14 +45,13 @@ public class CategoryController {
             String strId = req.params(":id");
             Integer intId = Integer.parseInt(strId);
             Category category = DBHelper.find(Category.class, intId);
+            List<Article> categoryArticles = DBCategory.getArticlesByCategory(category);
             Map<String, Object> model = new HashMap<>();
             model.put("categories", category);
+            model.put("categoryArticles", categoryArticles);
             model.put("template", "templates/categories/show.vtl");
             return new ModelAndView(model, "templates/layout.vtl");
         }, new VelocityTemplateEngine());
-
-
-
 
         post("/categories", (req, res) -> {
             String categoryName = req.queryParams("categoryName");
