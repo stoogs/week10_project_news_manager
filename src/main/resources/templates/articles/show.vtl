@@ -1,5 +1,5 @@
 
-<h2>Welcome to Article Show.vtl</h2>
+    <h2>$article.getTitle() </h2>
 <div class="container">
     <h3>$article.getHeadline() </h3>
     <textarea rows="10" cols="80">
@@ -10,7 +10,6 @@
         <tr>
             <th>Edit</th>
             <th>Delete</th>
-            <th>Title: </th>
             <th>Journalist: </th>
             <th>Category: </th>
             <th>Location: </th>
@@ -21,7 +20,6 @@
         <tr>
             <td><a href="/articles/edit/$article.getId()" class="button center">Edit</a>
             <td><a href="/articles/delete/$article.getId()" class="button center">Delete</a>
-            <td>$article.getTitle() </td>
             <td>$article.getJournalist().getJournalistName() </td>
             <td>$article.getCategory().getCategoryName() </td>
             <td>$article.getLocation().getLocationName() </td>

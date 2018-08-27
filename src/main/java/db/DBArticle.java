@@ -62,6 +62,4 @@ public class DBArticle {
         }
         return articles;
     }
-
-
 }
