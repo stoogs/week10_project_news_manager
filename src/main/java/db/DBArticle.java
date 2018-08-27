@@ -1,6 +1,7 @@
 package db;
 
 import models.Article;
+import models.Category;
 import models.Journalist;
 import org.hibernate.Criteria;
 import org.hibernate.HibernateException;
@@ -38,6 +39,21 @@ public class DBArticle {
         try {
             Criteria cr = session.createCriteria(Article.class);
             cr.addOrder(Order.desc("timeStamp"));
+            articles = cr.list();
+        } catch (HibernateException e) {
+            e.printStackTrace();
+        } finally {
+            session.close();
+        }
+        return articles;
+    }
+
+    public static List<Article> orderArticlesByViews(){
+        session = HibernateUtil.getSessionFactory().openSession();
+        List<Article> articles = null;
+        try {
+            Criteria cr = session.createCriteria(Article.class);
+            cr.addOrder(Order.desc("counter"));
             articles = cr.list();
         } catch (HibernateException e) {
             e.printStackTrace();

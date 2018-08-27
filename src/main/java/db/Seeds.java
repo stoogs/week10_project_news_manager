@@ -142,6 +142,18 @@ public class Seeds {
         List<Article> journalistArticles = DBHelper.getAll(Journalist.class);
         List<Article> articlesByAgeDesc = DBArticle.orderArticlesByAgeDesc();
         System.out.println(articlesByAgeDesc);
+        articles01e01.setCounter(25);
+        articles01e02.setCounter(215);
+        articles01e03.setCounter(252);
+        articles01e04.setCounter(2);
+        DBHelper.update(articles01e01);
+        DBHelper.update(articles01e02);
+        DBHelper.update(articles01e03);
+        DBHelper.update(articles01e04);
+        List<Article> articlesByViews = DBArticle.orderArticlesByViews();
+        System.out.println(articlesByViews);
+
+
         //null
 //        int id = ham.getId();
 //        List<Article> journalistArticless = DBHelper.find(Journalist.class,id);
