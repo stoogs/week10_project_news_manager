@@ -1,6 +1,7 @@
 package models;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -24,23 +25,33 @@ public class Category {
     public Category(String categoryName) {
         this.id = id;
         this.categoryName = categoryName;
-//        this.categoryArticles = new List<Article>();
-//        TODO: add array of articles
+        this.categoryArticles = new ArrayList<>();
     }
 
-    public int getId() {
-        return id;
+        public int getId() {
+            return id;
+        }
+
+        public void setId(int id){
+            this.id = id;
+        }
+
+        public String getCategoryName() {
+            return categoryName;
+        }
+
+        public void setCategoryName(String categoryName){
+            this.categoryName = categoryName;
+        }
+
+        public List<Article> getCategoryArticles() {
+            return categoryArticles;
+        }
+
+        public void setCategoryArticles(List<Article> categoryArticles) {
+            this.categoryArticles = categoryArticles;
+        }
+
     }
 
-    public void setId(int id) {
-        this.id = id;
-    }
 
-    public String getCategoryName() {
-        return categoryName;
-    }
-
-    public void setCategoryName(String categoryName) {
-        this.categoryName = categoryName;
-    }
-}

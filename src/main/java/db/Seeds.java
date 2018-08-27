@@ -125,7 +125,7 @@ public class Seeds {
 
         journalists.add(ham);
 
-
+       List<Article> testArticles = DBCategory.getArticlesByCategory(categoryFakeNews);
         //------------------------------TEST METHODS-----------------------------
         //Calculate age of any story.
         //storyAge(dateS01E01);
@@ -202,8 +202,6 @@ public class Seeds {
             System.out.println(storyAgeSimple);
             return storyAgeSimple;
         }
-
-
 
 }
 
@@ -296,3 +294,6 @@ public class Seeds {
 //if minutes > 0 then story is x minutes old.
 //end
 //​
+
+
+
