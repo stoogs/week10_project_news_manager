@@ -26,8 +26,8 @@ public class CategoryController {
         get("/categories", (req, res) -> {
             Map<String, Object> model = new HashMap<>();
             List<Category> categoryList = DBHelper.getAll(Category.class);
-            model.put("template", "templates/categories/index.vtl");
             model.put("categories", categoryList);
+            model.put("template", "templates/categories/index.vtl");
             return new ModelAndView(model, "templates/layout.vtl");
         }, new VelocityTemplateEngine());
 

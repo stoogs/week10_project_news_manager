@@ -26,11 +26,10 @@ public class LocationController {
         get("/locations", (req, res) -> {
             Map<String, Object> model = new HashMap<>();
             List<Location> locationList = DBHelper.getAll(Location.class);
+            model.put("locationList", locationList);
             model.put("template", "templates/locations/index.vtl");
-            model.put("locations", locationList);
             return new ModelAndView(model, "templates/layout.vtl");
         }, new VelocityTemplateEngine());
-
 
         //        NEW
         get("/locations/new", (req, res) -> {
@@ -40,7 +39,6 @@ public class LocationController {
             model.put("template", "templates/locations/create.vtl");
             return new ModelAndView(model, "templates/layout.vtl");
         }, new VelocityTemplateEngine());
-
 
 //        SHOW
         get("/locations/:id", (req, res) -> {
@@ -84,11 +82,11 @@ public class LocationController {
         post ("/locations/:id", (req, res) -> {
             String strId = req.params(":id");
             Integer intId = Integer.parseInt(strId);
-            Location locationList = DBHelper.find(Location.class, intId);
+            Location locList = DBHelper.find(Location.class, intId);
             String locationName = req.queryParams("locationName");
 
-            locationList.setLocationName(locationName);
-            DBHelper.update(locationList);
+            locList.setLocationName(locationName);
+            DBHelper.update(locList);
             HashMap<String, Object> model = new HashMap<>();
             res.redirect("/locations");
             return new ModelAndView(model, "layout.vtl");

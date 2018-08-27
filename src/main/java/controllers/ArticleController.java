@@ -116,10 +116,6 @@ public class ArticleController {
             counter = counter +1;
             article.setCounter(counter);
             DBHelper.update(article);
-
-//            articleCounter += 1;
-//            article.setCounter(articleCounter);
-//            System.out.println(article.getCounter());
             //Get date of article
             String storyAgeSimple = Seeds.storyAgeSimple(article.getTimeStamp());
             String storyAge = Seeds.storyAgeSimple(article.getTimeStamp());

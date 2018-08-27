@@ -71,6 +71,7 @@ public class Seeds {
         DBHelper.save(locationWorld);
         Location locationZoo = new Location("Zoo");
         DBHelper.save(locationZoo);
+        List<Location> tester = DBHelper.getAll(Location.class);
 
         // -------------------------Seed Time & Date----------------------------------------------------------
         GregorianCalendar currentTimeAndDate = new GregorianCalendar();
@@ -119,53 +120,6 @@ public class Seeds {
         Article articles01e08 = new Article("Monkey Winter Olympics", alfredTheMonkey, categoryObituary, locationWorld, dateS01E08,
                 "Monkey crashes bobsled during Winter Olympics...", "Monkey crashes bobsled during Winter Olympics because of photographers' cameras flashes, is taken by an ambulance, ends up in zoo with some sort of neck guard");
         DBHelper.save(articles01e08);
-
-        //------------------------------ARRAY TESTS------------------------------
-        List<Journalist> journalists = DBHelper.getAll(Journalist.class);
-
-        journalists.add(ham);
-
-
-        List<Article> test = categoryFakeNews.getCategoryArticles();
-
-
-       List<Article> testArticles = DBCategory.getArticlesByCategory(categoryFakeNews);
-        //------------------------------TEST METHODS-----------------------------
-        //Calculate age of any story.
-        //storyAge(dateS01E01);
-        storyAgeSimple(dateS01E01);
-        storyAgeSimple(articles01e01.getTimeStamp());
-        storyAgeSimple(currentTimeAndDate);
-        // Print Current Time
-        //System.out.println(tester.getTime());
-        //Doesnt work, returns Null
-        List<Article> journalistsStories = DBArticle.getArticleJournalists(ollieTheChimp);
-//        System.out.println(journalistsStories);
-        //Gets all Articles
-        System.out.println(journalistsStories);
-        List<Article> journalistArticles = DBHelper.getAll(Journalist.class);
-        List<Article> articlesByAgeDesc = DBArticle.orderArticlesByAgeDesc();
-        System.out.println(articlesByAgeDesc);
-        articles01e01.setCounter(25);
-        articles01e02.setCounter(215);
-        articles01e03.setCounter(252);
-        articles01e04.setCounter(2);
-        DBHelper.update(articles01e01);
-        DBHelper.update(articles01e02);
-        DBHelper.update(articles01e03);
-        DBHelper.update(articles01e04);
-        List<Article> articlesByViews = DBArticle.orderArticlesByViews();
-        System.out.println(articlesByViews);
-
-
-        //null
-//        int id = ham.getId();
-//        List<Article> journalistArticless = DBHelper.find(Journalist.class,id);
-//        System.out.println(journalistArticless);
-        String resultOfDateCall = Seeds.storyAgeSimple(articles01e01.getTimeStamp());
-//        System.out.println(resultOfDateCall);
-        List<Article> hamArticles = DBJournalist.getArticlesByJournalist(ham);
-
     }
 
         //-----------------------------------------------------------------------
@@ -220,7 +174,7 @@ public class Seeds {
             else
                 storyAgeSimple += ("Milliseconds old.");
 
-            System.out.println(storyAgeSimple);
+//            System.out.println(storyAgeSimple);
             return storyAgeSimple;
         }
 
