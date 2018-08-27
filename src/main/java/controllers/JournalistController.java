@@ -1,22 +1,18 @@
 package controllers;
 
-import db.DBCategory;
 import db.DBHelper;
 import db.DBJournalist;
 import models.Article;
-import models.Category;
 import models.Journalist;
 import spark.ModelAndView;
 import spark.template.velocity.VelocityTemplateEngine;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import static spark.Spark.get;
 import static spark.Spark.post;
-import static spark.SparkBase.staticFileLocation;
 
 public class JournalistController {
 
