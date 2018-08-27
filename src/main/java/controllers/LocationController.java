@@ -47,8 +47,10 @@ public class LocationController {
             String strId = req.params(":id");
             Integer intId = Integer.parseInt(strId);
             Location location = DBHelper.find(Location.class, intId);
+            String locationLocation = location.getLocationName();
             List<Article> locationArticles = DBLocation.getArticlesByLocation(location);
             Map<String, Object> model = new HashMap<>();
+            model.put("locationLocation", locationLocation);
             model.put("locations", location);
             model.put("locationArticles", locationArticles);
             model.put("template", "templates/locations/show.vtl");
