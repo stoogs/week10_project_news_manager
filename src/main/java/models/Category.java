@@ -17,7 +17,7 @@ public class Category {
     private String categoryName;
 
     @OneToMany(mappedBy = "category", fetch = FetchType.EAGER)
-    private List<Article> categoryArticles;
+        private List<Article> categoryArticles;
 
     public Category() {
     }

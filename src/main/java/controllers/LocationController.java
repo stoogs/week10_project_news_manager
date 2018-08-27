@@ -1,6 +1,8 @@
 package controllers;
 
 import db.DBHelper;
+import db.DBLocation;
+import models.Article;
 import models.Location;
 
 import spark.ModelAndView;
@@ -29,6 +31,7 @@ public class LocationController {
             return new ModelAndView(model, "templates/layout.vtl");
         }, new VelocityTemplateEngine());
 
+
         //        NEW
         get("/locations/new", (req, res) -> {
             HashMap<String, Object> model = new HashMap<>();
@@ -37,19 +40,20 @@ public class LocationController {
             model.put("template", "templates/locations/create.vtl");
             return new ModelAndView(model, "templates/layout.vtl");
         }, new VelocityTemplateEngine());
+
+
 //        SHOW
         get("/locations/:id", (req, res) -> {
             String strId = req.params(":id");
             Integer intId = Integer.parseInt(strId);
             Location location = DBHelper.find(Location.class, intId);
+            List<Article> locationArticles = DBLocation.getArticlesByLocation(location);
             Map<String, Object> model = new HashMap<>();
             model.put("locations", location);
+            model.put("locationArticles", locationArticles);
             model.put("template", "templates/locations/show.vtl");
             return new ModelAndView(model, "templates/layout.vtl");
         }, new VelocityTemplateEngine());
-
-
-
 
         post ("/locations", (req, res) -> {
             String locationName = req.queryParams("locationName");

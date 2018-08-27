@@ -1,6 +1,7 @@
 package models;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -17,13 +18,13 @@ public class Location {
     @Column(name = "location_name")
         private String locationName;
 
-    @OneToMany(mappedBy = "location", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "location", fetch = FetchType.EAGER)
         private List<Article> locationArticles;
 
     public Location(String locationName) {
         this.id = id;
         this.locationName = locationName;
-//    this.locationArticles = new List<Article>();
+        this.locationArticles = new ArrayList<>();
     }
 
     public Location() {
@@ -45,4 +46,11 @@ public class Location {
             this.locationName = locationName;
         }
 
+    public List<Article> getLocationArticles() {
+        return locationArticles;
+    }
+
+    public void setLocationArticles(List<Article> locationArticles) {
+        this.locationArticles = locationArticles;
+    }
 }
