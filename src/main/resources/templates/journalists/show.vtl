@@ -1,7 +1,8 @@
 <table>
     <br><br>
     <tr>
-        <td><img src="/images/frankmonkey.jpg" height="100" width="100" alt="Journalist"></td>
+        #set($name = "/images/profile" + $journalist.getId() + ".jpg")
+        <td><img src="$name" height="200" width="200" alt="Journalist"></td>
         <td>$journalist.getJournalistName()</td>
         <td>$journalist.getBiography()</td>
     </tr>
