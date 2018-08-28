@@ -2,37 +2,13 @@
 body {
 }
 
-.Menu_grid {
-    display: grid;
-    grid-auto-flow: column;
-    grid-template-columns: 75% 24%;
-    grid-template-rows: 100%;
-    grid-gap: 1%;
-}
-
-.MainNews {
-
-    grid-auto-columns: auto;
-    border: 2px solid rgb(10, 10, 10);
-    text-align: center;
-    background-color: bisque;
-}
-.SideBar {
-
-    grid-column: auto;
-    grid-row: auto;
-    border: 2px solid rgb(10, 10, 10);
-    text-align: center;
-    background-color: crimson;
-}
-
 ul {
     list-style-type: none;
     margin: 0;
     padding: 0;
     overflow: hidden;
     background-color: #333;
-
+}
 
 li {
     float: left;
