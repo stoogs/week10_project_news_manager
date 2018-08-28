@@ -1,5 +1,5 @@
 body {
-
+    background-color: bisque;
 }
 
 .Menu_grid {
@@ -10,28 +10,32 @@ body {
     grid-gap: 1%;
 }
 
-.MainNews {
-
-    grid-auto-columns: auto;
-    border: 2px solid rgb(10, 10, 10);
-    text-align: center;
-    background-color: bisque;
+.Navlogo{
+    max-height: 100px;
 }
-.SideBar {
 
-    grid-column: auto;
-    grid-row: auto;
-    border: 2px solid rgb(10, 10, 10);
-    text-align: center;
-    background-color: crimson;
+.Navtitle{
+    max-height: 100px;
 }
+
+.Navbar{
+    background-color: #D9B386;
+}
+
 
 ul {
     list-style-type: none;
     margin: 0;
     padding: 0;
     overflow: hidden;
-    background-color: #333;
+    background: rgba(201,101,103,1);
+    background: -moz-linear-gradient(left, rgba(201,101,103,1) 0%, rgba(201,101,103,1) 66%, rgba(201,101,103,0) 100%);
+    background: -webkit-gradient(left top, right top, color-stop(0%, rgba(201,101,103,1)), color-stop(66%, rgba(201,101,103,1)), color-stop(100%, rgba(201,101,103,0)));
+    background: -webkit-linear-gradient(left, rgba(201,101,103,1) 0%, rgba(201,101,103,1) 66%, rgba(201,101,103,0) 100%);
+    background: -o-linear-gradient(left, rgba(201,101,103,1) 0%, rgba(201,101,103,1) 66%, rgba(201,101,103,0) 100%);
+    background: -ms-linear-gradient(left, rgba(201,101,103,1) 0%, rgba(201,101,103,1) 66%, rgba(201,101,103,0) 100%);
+    background: linear-gradient(to right, rgba(201,101,103,1) 0%, rgba(201,101,103,1) 66%, rgba(201,101,103,0) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#c96567', endColorstr='#c96567', GradientType=1 );
 }
 
 
@@ -81,10 +85,6 @@ li.dropdown {
 }
 
 
-
-
-
-
 .Search{
     grid-auto-columns: auto;
     grid-auto-rows: auto;
@@ -92,3 +92,24 @@ li.dropdown {
     border: 2px solid rgb(10,10,10);
     text-align: center;
 }
+
+
+.MainNews {
+    grid-auto-columns: auto;
+    border: 2px solid rgb(10, 10, 10);
+    text-align: center;
+    background-color: bisque;
+}
+
+
+.SideBar {
+    grid-column: auto;
+    grid-row: auto;
+    border: 2px solid rgb(10, 10, 10);
+    text-align: center;
+    background-color: crimson;
+}
+
+
+
+
