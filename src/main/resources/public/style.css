@@ -9,7 +9,7 @@ body {
     grid-gap: 15px;
     grid-template-columns: 10fr ,1fr;
     grid-template-rows: 1fr,20fr;
-
+    grid-gap:1%
 }
 
 
