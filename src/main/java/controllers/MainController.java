@@ -30,6 +30,7 @@ public class MainController {
 
             ArrayList<String> mostPopularArticles = new ArrayList<>();
             List<Article> articles = DBArticle.orderArticlesByAgeDesc();
+
             for (Article article : articles){
                 String time = Seeds.storyAgeSimple(article.getTimeStamp());
                 mostPopularArticles.add(time); }

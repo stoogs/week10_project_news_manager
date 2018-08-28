@@ -1,27 +1,19 @@
-<h2>Welcome to Journalist Index.vtl</h2>
-
-
 <a href="/journalists/new">New Journalist</a>
-
-
 <p class="pageHeader">Journalists</p>
 <div class="container">
     <table>
         <tr>
             <th>Edit</th>
-            <th>Show</th>
             <th>Delete</th>
             <th>Journalist: </th>
             <th>Biography: </th>
-
             <th></th>
         </tr>
         #foreach($journalist in $journalists)
         <tr>
             <td><a href="/journalists/edit/$journalist.getId()" class="button center">Edit</a>
-            <td><a href="/journalists/$journalist.getId()" class="button center">Show</a>
             <td><a href="/journalists/delete/$journalist.getId()" class="button center">Delete</a>
-            <td>$journalist.getJournalistName()</td>
+            <a href="/journalists/$journalist.getId()">$journalist.getJournalistName()</a>
             <td>$journalist.getBiography()</td>
         <tr>
             #end
