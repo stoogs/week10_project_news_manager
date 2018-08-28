@@ -1,5 +1,11 @@
 <p class="pageHeader">Categories</p>
-<a href="/categories/new">New Category</a>
+
+<div class="add-button">
+    <form action="/categories/new" method="get">
+        <input type="submit" value="Create Category">
+    </form>
+</div>
+
 <div class="container">
     <table>
         #foreach($category in $categories)
@@ -8,10 +14,18 @@
                 <a href="/categories/$category.getId()">$category.getCategoryName()</a>
             </td>
             <td>
-                <a href="/categories/edit/$category.getId()">Edit</a>
+                <div class="edit-button">
+                    <form action="/categories/edit/$category.getId()" method="get">
+                        <input type="submit" value="Edit Category">
+                    </form>
+                </div>
             </td>
             <td>
-                <a href="/categories/delete/$category.getId()">Delete</a>
+                <div class="delete-button">
+                    <form action="/categories/delete/category.getId()" method="get">
+                        <input type="submit" value="Delete Category">
+                    </form>
+                </div>
             </td>
         <tr>
             #end

@@ -1,5 +1,11 @@
 <p class="pageHeader">Locations</p>
-<a href="/locations/new">New Location</a>
+
+<div class="add-button">
+    <form action="/locations/new" method="get">
+        <input type="submit" value="Create Location">
+    </form>
+</div>
+
 <div class="container">
     <table>
         #foreach($location in $locationList)
@@ -8,10 +14,18 @@
                 <a href="/locations/$location.getId()">$location.getLocationName()</a>
             </td>
             <td>
-                <a href="/locations/edit/$location.getId()">Edit</a>
+                <div class="edit-button">
+                    <form action="/locations/edit/$location.getId()" method="get">
+                        <input type="submit" value="Edit Location">
+                    </form>
+                </div>
             </td>
             <td>
-                <a href="/locations/delete/$location.getId()">Delete</a>
+                <div class="delete-button">
+                    <form action="/locations/delete/$location.getId()" method="get">
+                        <input type="submit" value="Delete Location">
+                    </form>
+                </div>
             </td>
         <tr>
             #end
