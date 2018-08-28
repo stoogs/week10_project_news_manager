@@ -1,14 +1,9 @@
-<a href="/categories">Back To Categories</a>
-
-<div class="container">
-    <h3>Category: $categoryCategory</h3>
-    <table>
-            #foreach($article in $categoryArticles)
-        <tr>
-            <td><a>$article.getTitle()</a></td>
-            <td><a>$article.getHeadline()</a></td>
-            <td><a>$article.getContent()</a></td>
-        <tr>
-            #end
-    </table>
-</div>
+<h1>$categoryCategory</h1>
+    #foreach($article in $categoryArticles)
+<fieldset>
+    <h2><a href="/articles/$article.getId()">$article.getTitle()</a></h2>
+    <h3>$article.getHeadline()</h3>
+    <h4>$article.getContent()</h4>
+</fieldset>
+    <br>
+    #end

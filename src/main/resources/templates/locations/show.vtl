@@ -1,14 +1,9 @@
-<a href="/categories">Back To Locations</a>
-
-<div class="container">
-    <h3>Location: $locationLocation</h3>
-    <table>
-            #foreach($location in $locationArticles)
-        <tr>
-            <td><a>$location.getTitle()</a></td>
-            <td><a>$location.getHeadline()</a></td>
-            <td><a>$location.getContent()</a></td>
-        <tr>
-            #end
-    </table>
-</div>
+<h1>$locationLocation</h1>
+#foreach($location in $locationArticles)
+<fieldset>
+    <h2><a href="/articles/$article.getId()">$location.getTitle()</a></h2>
+    <h3>$location.getHeadline()</h3>
+    <h4>$location.getContent()</h4>
+</fieldset>
+<br>
+#end

@@ -1,43 +1,29 @@
-<h2>Welcome to Article Index.vtl</h2>
-
-
-<a href="/articles/new">New Article</a>
-
 <p class="pageHeader">Articles</p>
 <div class="container">
+
+    <a href="/articles/new">Create Article</a>
     <table>
         <tr>
-            <th>Edit</th>
-            <th>Show</th>
-            <th>Delete</th>
+            <th></th>
+            <th></th>
             <th>Title: </th>
             <th>Journalist: </th>
-            <th>Category: </th>
-            <th>Location: </th>
-            <th>TimeStamp: </th>
             <th>Headline: </th>
-            <th>Content: </th>
-            <th>Test Time: </th>
+            <th>Time Stamp: </th>
+            <th></th>
         </tr>
-        #set($counter = 0)
-        #foreach($article in $articles)
-
+            #set($counter = 0)
+            #foreach($article in $articles)
         <tr>
             <td><a href="/articles/edit/$article.getId()" class="button center">Edit</a>
-            <td><a href="/articles/$article.getId()" class="button center">Show</a>
             <td><a href="/articles/delete/$article.getId()" class="button center">Delete</a>
             <td>$article.getTitle() </td>
             <td>$article.getJournalist().getJournalistName() </td>
-            <td>$article.getCategory().getCategoryName() </td>
-            <td>$article.getLocation().getLocationName() </td>
-            <td>$article.getTimeStamp().getWeekYear()</td>
             <td>$article.getHeadline() </td>
-            <td>$article.getContent() </td>
             <td>$stringTimes[$counter]</td>
+            <td><a href="/articles/$article.getId()" class="button center">Show</a>
         <tr>
-        #set($counter = $counter + 1)
-        #end
+            #set($counter = $counter + 1)
+            #end
     </table>
-
-
 </div>
