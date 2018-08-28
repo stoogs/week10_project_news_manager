@@ -16,7 +16,7 @@ public class Category {
     @Column(name = "category_name")
     private String categoryName;
 
-    @OneToMany(mappedBy = "category", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "category", fetch = FetchType.LAZY)
         private List<Article> categoryArticles;
 
     public Category() {
@@ -25,7 +25,7 @@ public class Category {
     public Category(String categoryName) {
         this.id = id;
         this.categoryName = categoryName;
-        this.categoryArticles = new ArrayList<>();
+        //this.categoryArticles = new ArrayList<>();
     }
 
         public int getId() {

@@ -16,20 +16,20 @@ import static spark.Spark.get;
 import static spark.Spark.post;
 
 public class LocationController {
-    public LocationController()  {
+    public LocationController() {
         this.setupEndpoints();
     }
 
-    public void setupEndpoints(){
-
+    public void setupEndpoints() {
 //        INDEX
         get("/locations", (req, res) -> {
+            List<Location> getLocationList = DBHelper.getAll(Location.class);
             Map<String, Object> model = new HashMap<>();
-            List<Location> locationList = DBHelper.getAll(Location.class);
-            model.put("locationList", locationList);
             model.put("template", "templates/locations/index.vtl");
+            model.put("locationList", getLocationList);
             return new ModelAndView(model, "templates/layout.vtl");
         }, new VelocityTemplateEngine());
+
 
         //        NEW
         get("/locations/new", (req, res) -> {
@@ -66,15 +66,14 @@ public class LocationController {
             return new ModelAndView(model, "layout.vtl");
         }, new VelocityTemplateEngine());
 
-
 //        UPDATE
         get("/locations/edit/:id", (req, res) -> {
             String strId = req.params(":id");
             Integer intId = Integer.parseInt(strId);
-            Location location = DBHelper.find(Location.class, intId);
+            Location getEditLocation = DBHelper.find(Location.class, intId);
 
             Map<String, Object> model = new HashMap<>();
-            model.put ("location", location);
+            model.put ("location", getEditLocation);
             model.put("template", "templates/locations/edit.vtl");
             return new ModelAndView(model, "templates/layout.vtl");
         }, new VelocityTemplateEngine());
@@ -82,11 +81,11 @@ public class LocationController {
         post ("/locations/:id", (req, res) -> {
             String strId = req.params(":id");
             Integer intId = Integer.parseInt(strId);
-            Location locList = DBHelper.find(Location.class, intId);
+            Location postIdLocationList = DBHelper.find(Location.class, intId);
             String locationName = req.queryParams("locationName");
 
-            locList.setLocationName(locationName);
-            DBHelper.update(locList);
+            postIdLocationList.setLocationName(locationName);
+            DBHelper.update(postIdLocationList);
             HashMap<String, Object> model = new HashMap<>();
             res.redirect("/locations");
             return new ModelAndView(model, "layout.vtl");
@@ -97,11 +96,12 @@ public class LocationController {
         get ("/locations/delete/:id", (req, res) -> {
             String strId = req.params(":id");
             Integer intId = Integer.parseInt(strId);
-            Location deletedLocation = DBHelper.find(Location.class, intId);
-            DBHelper.delete(deletedLocation);
+            Location deleteLocation = DBHelper.find(Location.class, intId);
+            DBHelper.delete(deleteLocation);
             res.redirect("/locations");
             return null;
         }, new VelocityTemplateEngine());
-
+//
+       }
     }
-}
+

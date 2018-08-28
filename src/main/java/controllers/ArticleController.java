@@ -25,15 +25,14 @@ public class ArticleController {
         get("/articles", (req, res) -> {
             Map<String, Object> model = new HashMap<>();
             ArrayList<String> stringTimes = new ArrayList<>();
-            List<Article> articles = DBArticle.orderArticlesByAgeDesc();
+            List<Article> getArticles = DBArticle.orderArticlesByAgeDesc();
 
-           // List<Article> articles = DBHelper.getAll(Article.class);
             //Create Array of times from Articles
-            for (Article article : articles){
+            for (Article article : getArticles){
             String time = Seeds.storyAgeSimple(article.getTimeStamp());
             stringTimes.add(time); }
 
-            model.put("articles", articles);
+            model.put("articles", getArticles);
             model.put("stringTimes", stringTimes);
             model.put("template", "templates/articles/index.vtl");
             return new ModelAndView(model, "templates/layout.vtl");
