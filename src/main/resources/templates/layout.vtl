@@ -1,44 +1,81 @@
 <!DOCTYPE html>
 <html>
-<head>
-<body>
-<div class="Menu_grid">
+    <head>
+        <title>Monkey News</title>
+            <link href="/style.css" rel="stylesheet" type="text/css" />
+            <link rel="icon" href="/images/speak-no-evil-monkey20.png" />
 
-    <div class="Navbar"NAVBAR>
-        <h1>NAVIGATION BAR HERE</h1>
-        <a href="/">Home</a>
-        <a href="/journalists">Journalists</a>
-        <a href="/categories">Categories</a>
-        <a href="/articles">Articles</a>
-        <a href="/locations">Location</a>
-    </div>
-    <div class="Logo"LOGO>
-        <h1>LOGO GOES HERE</h1>
-    </div>
+        <nav class="Menu_grid">
 
-</div>
-    <title>Monkey News</title>
-    <link rel="icon" href="/images/speak-no-evil-monkey2.png" />
-    <link href="/style.css" rel="stylesheet" type="text/css" />
+            <div class="Navbar"NAVBAR>
+                <h1>News</h1>
+                <ul>
+                    <li class="dropdown">
+                        <a href="/journalists" class="dropbtn">Journalists</a>
+                            <div class="dropdown-content">
+                                <a href="/journalists/1">Link 1</a>
+                                <a href="/journalists/2">Link 2</a>
+                                <a href="/journalists/3">Link 3</a>
+                            </div>
+                    </li>
 
-</head>
-<table>
-    <tr>
-        <th>New</th>
-        <th>New</th>
-        <th>New </th>
-    </tr>
-    <tr>
-        <td><a href="/locations/new" class="button center">Location</a></td>
-        <td><a href="/categories/new" class="button center">Category</a></td>
-        <td><a href="/journalists/new" class="button center">Journalist</a></td>
-    </tr>
-</table>
-<body>
-<!-- begin inner template-->
-<div class="container">
-    #parse( $template )
-</div>
-<!-- end inner template-->
-</body>
+                    <li class="dropdown">
+                        <a href="/categories" class="dropbtn">Categories</a>
+                            <div class="dropdown-content">
+                                <a href="/categories/1">Link 1</a>
+                                <a href="/categories/2">Link 2</a>
+                                <a href="/categories/3">Link 3</a>
+                            </div>
+                    </li>
+
+                    <li class="dropdown">
+                        <a href="/locations" class="dropbtn">Location</a>
+                            <div class="dropdown-content">
+                                <a href="/locations/1">Link 1</a>
+                                <a href="/locations/2">Link 2</a>
+                                <a href="/locations/3">Link 3</a>
+                            </div>
+                    </li>
+
+                </ul>
+
+            </div>
+
+            <div class="Search"SEARCH>
+                <h1>Top Stories</h1>
+            </div>
+
+        </nav>
+    </head>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <body>
+        <!--<table>-->
+            <!--<tr>-->
+                <!--<th>New</th>-->
+                <!--<th>New</th>-->
+                <!--<th>New </th>-->
+            <!--</tr>-->
+            <!--<tr>-->
+                <!--<td><a href="/locations/new" class="button center">Location</a></td>-->
+                <!--<td><a href="/categories/new" class="button center">Category</a></td>-->
+                <!--<td><a href="/journalists/new" class="button center">Journalist</a></td>-->
+            <!--</tr>-->
+        <!--</table>-->
+
+        <!-- begin inner template-->
+        <div class="container"> #parse( $template )</div>
+        <!-- end inner template-->
+    </body>
 </html>
