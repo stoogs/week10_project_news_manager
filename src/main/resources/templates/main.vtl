@@ -1,9 +1,26 @@
-<div class="container">
-    <h1>Monkey News</h1>
-        #foreach($article in $articles)
-        <h3>$article.getTitle()</h3>
-        <h4>$article.getHeadline()</h4>
-        <td><a href="/articles/$article.getId()" class="button center">Show</a>
-    <br>
+
+    <div class="MainGrid"MAINGRID>
+
+        <div class="MainNews"MAINNEWS>
+            <h1>TOP STORIES</h1>
+            <br>
+            <table border="1">
+            #foreach($article in $articles)
+                <th><h1>$article.getTitle()</h1></th>
+                <tr><td><h2>$article.getHeadline()</h2></td></tr>
+            <tr><a href="/articles/$article.getId()" class="button center"></a><tr>
+                <br>
+                #end
+            </table>
+        </div>
+
+        <div class="SideBar"SIDEBAR>
+            <h1>Popular News</h1>
+            #foreach($article in $articles)
+            <br>
+            <h4>$article.getHeadline()</h4>
+            <h6>Views: $article.getCounter() by $article.getJournalist().getJournalistName()</h6>
             #end
-</div>
+        </div>
+    </div>
+
