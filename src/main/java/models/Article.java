@@ -21,7 +21,6 @@ public class Article {
     @Column(name = "title")
     private String title;
 
-
     @ManyToOne
     @JoinColumn(name = "journalist_id", nullable = false)
     private Journalist journalist;
@@ -40,7 +39,6 @@ public class Article {
     @Column(name = "content", columnDefinition = "TEXT")
     private String content;
 
-//    @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "time_stamp")
     private GregorianCalendar timeStamp;
 

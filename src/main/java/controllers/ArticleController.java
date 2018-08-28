@@ -4,7 +4,6 @@ import db.DBArticle;
 import db.DBHelper;
 import db.Seeds;
 import models.*;
-import models.Article;
 import spark.ModelAndView;
 import spark.template.velocity.VelocityTemplateEngine;
 
