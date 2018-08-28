@@ -1,22 +1,19 @@
-<<<<<<< HEAD
-<html>
-=======
 
->>>>>>> 81fac1eb9b395df767f39c6ab6b0e54ae4ef7e93
+
+<html>
     <div class="Menu_grid"Menu_grid>
 
         <div class="MainNews"MAINNEWS>
             <h1>TOP STORIES</h1>
             <br>
-            <table border="1">
             #foreach($article in $articles)
-                <th><h1>$article.getTitle()</h1></th>
-                <tr><td><h2>$article.getHeadline()</h2></td></tr>
-            <tr><a href="/articles/$article.getId()" class="button center"></a><tr>
-                <br>
+                <h1>$article.getTitle()</h1>
+                <h2>$article.getHeadline()</h2>
+            <a href="/articles/$article.getId()" class="button center"></a>
+            <br>
                 #end
-            </table>
         </div>
+
 
         <div class="SideBar"SIDEBAR>
             <h1>Popular News</h1>
@@ -24,27 +21,8 @@
             <br>
             <h4>$article.getHeadline()</h4>
             <h6>Views: $article.getCounter() by $article.getJournalist().getJournalistName()</h6>
-<<<<<<< HEAD
+            #end
         </div>
 
-=======
->>>>>>> 81fac1eb9b395df767f39c6ab6b0e54ae4ef7e93
-
-<div class="container">
-    <h1>Latest News</h1>
-        #foreach($article in $articles)
-        <h3>$article.getTitle()</h3>
-        <h4>$article.getHeadline()</h4>
-        <td><a href="/articles/$article.getId()" class="button center">Show</a>
-    <br>
-<<<<<<< HEAD
-            #end
-</div>
     </div>
 </html>
-=======
-
-            #end
-        </div>
-    </div>
->>>>>>> 81fac1eb9b395df767f39c6ab6b0e54ae4ef7e93
