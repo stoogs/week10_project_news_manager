@@ -1,7 +1,12 @@
 <p class="pageHeader">Articles</p>
 <div class="container">
 
-    <a href="/articles/new">Create Article</a>
+    <div class="add-button">
+        <form action="/articles/new" method="get">
+            <input type="submit" value="Create Article">
+        </form>
+    </div>
+
     <table>
         <tr>
             <th></th>
@@ -15,13 +20,31 @@
             #set($counter = 0)
             #foreach($article in $articles)
         <tr>
-            <td><a href="/articles/edit/$article.getId()" class="button center">Edit</a>
-            <td><a href="/articles/delete/$article.getId()" class="button center">Delete</a>
+            <td>
+                <div class="edit-button">
+                    <form action="/articles/edit/$article.getId()" method="get">
+                        <input type="submit" value="Edit Article">
+                    </form>
+                </div>
+            </td>
+            <td>
+                <div class="delete-button">
+                    <form action="/articles/delete/$article.getId()" method="get">
+                        <input type="submit" value="Delete Article">
+                    </form>
+                </div>
+            </td>
             <td>$article.getTitle() </td>
             <td>$article.getJournalist().getJournalistName() </td>
             <td>$article.getHeadline() </td>
             <td>$stringTimes[$counter]</td>
-            <td><a href="/articles/$article.getId()" class="button center">Show</a>
+            <td>
+                <div class="show-button">
+                    <form action="/articles/$article.getId()" method="get">
+                        <input type="submit" value="Show Article">
+                    </form>
+                </div>
+            </td>
         <tr>
             #set($counter = $counter + 1)
             #end

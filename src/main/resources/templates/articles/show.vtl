@@ -22,8 +22,20 @@
                 <td>$article.getLocation().getLocationName() </td>
                 <td>$storyAge</td>
                 <td>$counter</td>
-                <td><a href="/articles/edit/$article.getId()" class="button center">Edit</a>
-                <td><a href="/articles/delete/$article.getId()" class="button center">Delete</a>
+                <td>
+                    <div class="edit-button">
+                        <form action="/articles/edit/$article.getId()" method="get">
+                            <input type="submit" value="Edit Article">
+                        </form>
+                    </div>
+                </td>
+                <td>
+                    <div class="delete-button">
+                        <form action="/articles/delete/$article.getId()" method="get">
+                            <input type="submit" value="Delete Article">
+                        </form>
+                    </div>
+                </td>
             </tr>
         </table>
     <br>
