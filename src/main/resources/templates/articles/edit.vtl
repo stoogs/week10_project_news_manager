@@ -1,13 +1,16 @@
 <h2>Edit $article.getTitle() Article</h2>
 <form action="/articles/edit/$article.getId()" method="post">
     <label for="title">Title:</label>
-    <input type="text" class="inputbox" name="title" required="true" value="$article.getTitle()">
+    <br>
+    <textarea rows ="1" cols="80" type="text" class="inputbox" name="title" required="true" value="$article.getTitle()">$article.getTitle()</textarea>
     <br>
     <label for="title">Headline:</label>
-    <input type="text" class="inputbox" name="headline" required="true" value="$article.getHeadline()">
+    <br>
+    <textarea rows ="2" cols="80" type="text" class="inputbox" name="headline" required="true" value="$article.getHeadline()">$article.getHeadline()</textarea>
     <br>
     <label for="title">Content:</label>
-    <input type="text" class="inputbox" name="content" required="true" value="$article.getContent()" rows="4" cols="100">
+    <br>
+    <textarea rows ="25" cols="80" type="text" class="inputbox" name="content" required="true" value="$article.getContent()">$article.getContent()</textarea>
     <br>
 
     <label for="journalist">Journalist:</label>
@@ -22,8 +25,7 @@
         $journalist.getJournalistName()</option>
         #end
     </select>
-    <br>
-    <label for="category">Category</label>
+    <label for="category">Category:</label>
     <select id="category" name="category">
         #foreach( $category in $categories )
         <option value="$category.getId()"
@@ -33,8 +35,7 @@
             $category.getCategoryName()</option>
         #end
     </select>
-    <br>
-    <label for="location">Location</label>
+    <label for="location">Location:</label>
     <select id="location" name="location">
         #foreach( $location in $locations )
         <option value="$location.getId()"
@@ -44,7 +45,7 @@
                 $location.getLocationName()</option>
         #end
     </select>
-    <br>
+    <br><br>
     <input type="submit" value="Save Article" class="button">
 </form>
 

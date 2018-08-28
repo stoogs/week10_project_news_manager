@@ -107,23 +107,27 @@ public class Seeds {
 
         Article articles01e04 = new Article("Monkey chat show", jack, categoryPropaganda, locationWorld, dateS01E04,
                 "Monkey hosts chat show in Moscow", " In Moscow, there is a TV channel that went through a load of redundancies. As a chat show was about to go live, the crew realised they had no one to present. For some reason, there was a chimp knocking about. They popped the chimp into a suit and he presented the show. Karl isn't sure how the chimp asked questions, but it went all right. Steve suggests Cher is on the show, and Karl carries on about how Cher loved the chimp and it was one of the best interviews she'd ever been part of. The chimp stayed on.");
+        articles01e04.setCounter(17);
         DBHelper.save(articles01e04);
 
         Article articles01e05 = new Article("Monkey Lives With Zoo Keeper", ollieTheChimp, categoryFakeNews, locationZoo, dateS01E05,
                 "Monkey starts acting like a human person, starts hitting on zoo keeper's wife, ends up living with zoo keeper's wife", "Oliver the Humanzee, the chimp who was a bit lonely in the zoo as there was no other monkeys and became mates with the zoo keeper. As time went on he started helping the zoo keeper with his work. After a while, the monkey moved in with the zoo keeper... and trouble ensues.");
+        articles01e05.setCounter(87);
         DBHelper.save(articles01e05);
 
         Article articles01e06 = new Article("NYFD Monkey", enos, categoryLocalHero, locationWorld, dateS01E06,
                 "Monkey from NYFD saves people from burning building", " involves a skyscraper fire in New York and a short little hero with long hairy arms. DJ ReachAround presents a dance mix version of I Could Eat a Knob at Night.");
+        articles01e06.setCounter(5);
         DBHelper.save(articles01e06);
 
         Article articles01e07 = new Article("Monkey on building site", jenny, categoryLocalHero, locationWorld, dateS01E07,
                 "Monkey builder goes from building to building just building", "While working on a building site, a man is surprised to see a little fella working on the top bit. He is curious why this bloke stays working high up and never comes down, after more investigation, the bloke makes a startling revelation...");
+        articles01e07.setCounter(54);
         DBHelper.save(articles01e07);
 
         Article articles01e08 = new Article("Monkey Winter Olympics", alfredTheMonkey, categoryObituary, locationWorld, dateS01E08,
                 "Monkey crashes bobsled during Winter Olympics...", "Monkey crashes bobsled during Winter Olympics because of photographers' cameras flashes, is taken by an ambulance, ends up in zoo with some sort of neck guard");
-
+        articles01e08.setCounter(25);
         DBHelper.save(articles01e08);
 
         Article articles01e09 = new Article("Monkey Air", enos, categoryLocalHero, locationAir, dateS01E09, "Monkey Pilot, gets caught by a passenger who rushes into cockpit wanting a bag of nuts", "Ricky announces Monkey News. Karl sets the scene: an airline has a lack of pilots due to a strike. A manager of the airline is able to fly a plane with a help from his son and a certain co-pilot. Some how they managed to get someone past the picket lines to help fly the plane. Since it's the only plane flying, it's very successful. In addition, the flight is brilliant and everyone is loving it! It's a great experience. Things are going great until one day a woman on the plane wanted a bag of nuts. For some reason, the airline stopped giving out the nuts. Despite not being able to complain about the flight, she wants some nuts. Earlier she saw a bag of nuts being delivered to the cockpit. She storms the cockpit and there's a monkey sat there with headphones");
@@ -136,7 +140,7 @@ public class Seeds {
         DBHelper.save(articles01e11);
 
         Article articles01e12 = new Article("Press the Right Button and Do Summat!", jack, categoryEntertainment, locationOuterSpace, dateS01E012, "Monkey in space update, apparently there's a museum for chimponauts.", "Monkey News and Steve is getting annoyed with the particularly robust jingle. Karl wants to retire the feature; all the news has been done. There's an update on the first Monkey News from Episode 1. The monkey could never get that high again, even when he tried to get a band together. This monkey was Ham and another was Enos. When Enos went up, the buttons were reversed, but fortunately he knew it wasn't right. He became part of the chimponauts who lived in a retirement home with a museum where they could reminisce about their adventures. Karl has some inspiring words to close Monkey News.");
-        //DBHelper.save(articles01e12);
+        DBHelper.save(articles01e12);
 
         Article articles03e06 = new Article("Bonus Monkey News", alfredTheMonkey, categoryFoodDrink, locationWorld, dateS03E06, "Monkey brings great ape fruit juice to a town in the middle of nowhere, a long time ago.", "In a town somewhere awhile ago, a barrel used to appear in a village that contained a fruit drink. This was back when people only drank water. They only ate fruit back then, they didn’t drink it. Visitors to the village loved it, but they couldn’t sell it because they didn’t know where it came from. Word got out and a businessman from Chicago came in and wanted to find out where they got it. At night he saw a little fella and he followed him back to where they made it. Presumably the fruit drink was made by monkeys. Great ape fruit juice. (And that's why they stopped doing it...)");
         DBHelper.save(articles03e06);

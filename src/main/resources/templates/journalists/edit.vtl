@@ -1,12 +1,8 @@
-<h4>Journalists/edit.vtl</h4>
 <p class="pageHeader">Edit Journalist</p>
 
 <form action="/journalists/$journalist.getId()" method="post">
     <label for="title">Journalist:</label>
     <input class="inputbox" type="text" name="journalistName" required="true" value="$journalist.getJournalistName()">
     <input class="inputbox" type="text" name="biography" required="true" value="$journalist.getBiography()">
-    <input type="submit" value="Save" class="button">
-
-<br><br>
-    <td><a href="/journalists" class="button center">Cancel</a>
+    <input type="submit" value="Save Journalist" class="button">
 </form>

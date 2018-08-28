@@ -1,20 +1,33 @@
-<a href="/journalists/new">New Journalist</a>
 <p class="pageHeader">Journalists</p>
+
+<div class="add-button">
+    <form action="/journalists/new" method="get">
+        <input type="submit" value="Create Journalist">
+    </form>
+</div>
+
+
 <div class="container">
     <table>
-        <tr>
-            <th>Edit</th>
-            <th>Delete</th>
-            <th>Journalist: </th>
-            <th>Biography: </th>
-            <th></th>
-        </tr>
         #foreach($journalist in $journalists)
         <tr>
-            <td><a href="/journalists/edit/$journalist.getId()" class="button center">Edit</a>
-            <td><a href="/journalists/delete/$journalist.getId()" class="button center">Delete</a>
-            <a href="/journalists/$journalist.getId()">$journalist.getJournalistName()</a>
-            <td>$journalist.getBiography()</td>
+            <td>
+                <a href="/journalists/$journalist.getId()">$journalist.getJournalistName()</a>
+            </td>
+            <td>
+                <div class="edit-button">
+                    <form action="/journalists/edit/$journalist.getId()" method="get">
+                        <input type="submit" value="Edit Location">
+                    </form>
+                </div>
+            </td>
+            <td>
+                <div class="delete-button">
+                    <form action="/journalists/delete/$journalist.getId()" method="get">
+                        <input type="submit" value="Delete Location">
+                    </form>
+                </div>
+            </td>
         <tr>
             #end
     </table>

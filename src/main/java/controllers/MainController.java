@@ -28,20 +28,21 @@ public class MainController {
 
         get("/", (req, res) -> {
             Map<String, Object> model = new HashMap<>();
-
-            ArrayList<String> mostPopularArticles = new ArrayList<>();
+            List<String> articleTimeStamp = new ArrayList<>();
             List<Article> articles = DBArticle.orderArticlesByAgeDesc();
             List<Journalist> journalists = DBHelper.getAll(Journalist.class);
             List<Category> categories = DBHelper.getAll(Category.class);
             List<Location> locations = DBHelper.getAll(Location.class);
             for (Article article : articles){
                 String time = Seeds.storyAgeSimple(article.getTimeStamp());
-                mostPopularArticles.add(time); }
+                articleTimeStamp.add(time); }
+            List<Article> articlesByViews = DBArticle.orderArticlesByViews();
+            model.put("articlesByViews", articlesByViews);
             model.put("articles", articles);
             model.put("journalists", journalists);
             model.put("categories", categories);
             model.put("locations", locations);
-            model.put("mostPopularArticles", mostPopularArticles);
+            model.put("articleTimeStamp", articleTimeStamp);
             model.put("template", "templates/main.vtl");
             return new ModelAndView(model, "templates/layout.vtl");
         }, new VelocityTemplateEngine());

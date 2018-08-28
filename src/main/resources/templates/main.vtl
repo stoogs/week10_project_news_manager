@@ -10,8 +10,12 @@
             #foreach($article in $articles)
                 <h1>$article.getTitle()</h1>
                 <h2>$article.getHeadline()</h2>
-                <td>$mostPopularArticles[$counter]</td>
-            <a href="/articles/$article.getId()" class="button center"></a>
+                <h3>$articleTimeStamp[$counter]
+            <div class="show-button">
+                <form action="/articles/$article.getId()" method="get">
+                    <input type="submit" value="Show Article">
+                </form>
+            </div></h3>
             <br>
 
             #set($counter = $counter + 1)
@@ -20,11 +24,15 @@
 
         <div class="SideBar"SIDEBAR>
             <h1>Popular News</h1>
-            #foreach($article in $articles)
+            #foreach($article in $articlesByViews)
             <br>
             <h4>$article.getHeadline()</h4>
-            <h6>Views: $article.getCounter() by $article.getJournalist().getJournalistName()</h6>
-            <h6>Age: </h6>
+            <h4>Views: $article.getCounter() by $article.getJournalist().getJournalistName()
+            <div class="show-button">
+                <form action="/articles/$article.getId()" method="get">
+                    <input type="submit" value="Show Article">
+                </form>
+            </div></h4>
             #end
         </div>
 
