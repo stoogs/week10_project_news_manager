@@ -2,3 +2,37 @@ body {
 
     background-color: rgba(25,15,255,.2);
 }
+
+.Menu_grid {
+    display: grid;
+    grid-gap: 15px;
+    grid-template-columns: 10fr ,1fr;
+    grid-template-rows: 1fr,20fr;
+
+}
+
+
+.Navbar {
+    grid-row: 1/4;
+    grid-column: 1/8;
+    background-color: blue;
+    border: 2px solid rgb(10,10,10);
+    text-align: center;
+}
+
+.Logo{
+    grid-row: 1/4;
+    grid-column: 8/10;
+    order: 2;
+    background-color: orange;
+    border: 2px solid rgb(10,10,10);
+    text-align: center;
+}
+
+
+a:visited {
+    text-decoration: none;
+}
+a:link {
+    text-decoration: none;
+}
