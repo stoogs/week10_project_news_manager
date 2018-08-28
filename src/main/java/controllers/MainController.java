@@ -35,7 +35,6 @@ public class MainController {
                 mostPopularArticles.add(time); }
             model.put("articles", articles);
             model.put("mostPopularArticles", mostPopularArticles);
-
             model.put("template", "templates/main.vtl");
             return new ModelAndView(model, "templates/layout.vtl");
         }, new VelocityTemplateEngine());
