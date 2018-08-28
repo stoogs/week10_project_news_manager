@@ -6,12 +6,16 @@
         <div class="MainNews"MAINNEWS>
             <h1>TOP STORIES</h1>
             <br>
+            #set($counter = 0)
             #foreach($article in $articles)
                 <h1>$article.getTitle()</h1>
                 <h2>$article.getHeadline()</h2>
+                <td>$mostPopularArticles[$counter]</td>
             <a href="/articles/$article.getId()" class="button center"></a>
             <br>
-                #end
+
+            #set($counter = $counter + 1)
+            #end
         </div>
 
         <div class="SideBar"SIDEBAR>
@@ -20,6 +24,7 @@
             <br>
             <h4>$article.getHeadline()</h4>
             <h6>Views: $article.getCounter() by $article.getJournalist().getJournalistName()</h6>
+            <h6>Age: </h6>
             #end
         </div>
 

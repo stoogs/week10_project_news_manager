@@ -192,7 +192,7 @@ public class Seeds {
                 storyAgeSimple += (" Just Added!");
             }
             else
-                storyAgeSimple += ("Milliseconds old.");
+                storyAgeSimple += ("STOP THE BANANA PRESS!!");
 
 //            System.out.println(storyAgeSimple);
             return storyAgeSimple;
