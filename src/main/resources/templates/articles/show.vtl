@@ -1,31 +1,30 @@
-
-    <h2>$article.getTitle() </h2>
+<h2>$article.getTitle() </h2>
 <div class="container">
-    <h3>$article.getHeadline() </h3>
+<h3>$article.getHeadline() </h3>
     <textarea rows="10" cols="80">
-    $article.getContent()
+        $article.getContent()
     </textarea>
-<br>
-    <table>
-        <tr>
-            <th>Edit</th>
-            <th>Delete</th>
-            <th>Journalist: </th>
-            <th>Category: </th>
-            <th>Location: </th>
-            <th>TimeStamp: </th>
-            <th>ViewCount: </th>
-        </tr>
+    <br>
+        <table>
+            <tr>
+                <th>Journalist: </th>
+                <th>Category: </th>
+                <th>Location: </th>
+                <th>TimeStamp: </th>
+                <th>ViewCount: </th>
+                <th></th>
+                <th></th>
+            </tr>
 
-        <tr>
-            <td><a href="/articles/edit/$article.getId()" class="button center">Edit</a>
-            <td><a href="/articles/delete/$article.getId()" class="button center">Delete</a>
-            <td>$article.getJournalist().getJournalistName() </td>
-            <td>$article.getCategory().getCategoryName() </td>
-            <td>$article.getLocation().getLocationName() </td>
-            <td>$storyAge</td>
-            <td>$counter</td>
-        </tr>
-    </table>
+            <tr>
+                <td>$article.getJournalist().getJournalistName() </td>
+                <td>$article.getCategory().getCategoryName() </td>
+                <td>$article.getLocation().getLocationName() </td>
+                <td>$storyAge</td>
+                <td>$counter</td>
+                <td><a href="/articles/edit/$article.getId()" class="button center">Edit</a>
+                <td><a href="/articles/delete/$article.getId()" class="button center">Delete</a>
+            </tr>
+        </table>
     <br>
 </div>
