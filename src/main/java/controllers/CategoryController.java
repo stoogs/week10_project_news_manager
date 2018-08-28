@@ -2,8 +2,7 @@ package controllers;
 
 import db.DBCategory;
 import db.DBHelper;
-import models.Article;
-import models.Category;
+import models.*;
 import spark.ModelAndView;
 import spark.template.velocity.VelocityTemplateEngine;
 
@@ -25,6 +24,12 @@ public class CategoryController {
         get("/categories", (req, res) -> {
             Map<String, Object> model = new HashMap<>();
             List<Category> categoryList = DBHelper.getAll(Category.class);
+            List<Journalist> journalists = DBHelper.getAll(Journalist.class);
+            List<Category> categories = DBHelper.getAll(Category.class);
+            List<Location> locations = DBHelper.getAll(Location.class);
+            model.put("journalists", journalists);
+            model.put("categories", categories);
+            model.put("locations", locations);
             model.put("categories", categoryList);
             model.put("template", "templates/categories/index.vtl");
             return new ModelAndView(model, "templates/layout.vtl");
@@ -34,6 +39,12 @@ public class CategoryController {
         get("/categories/new", (req, res) -> {
             Map<String, Object> model = new HashMap<>();
             List<Category> categoryList = DBHelper.getAll(Category.class);
+            List<Journalist> journalists = DBHelper.getAll(Journalist.class);
+            List<Category> categories = DBHelper.getAll(Category.class);
+            List<Location> locations = DBHelper.getAll(Location.class);
+            model.put("journalists", journalists);
+            model.put("categories", categories);
+            model.put("locations", locations);
             model.put("categories", categoryList);
             model.put("template", "templates/categories/create.vtl");
             return new ModelAndView(model, "templates/layout.vtl");
@@ -46,9 +57,14 @@ public class CategoryController {
             Category category = DBHelper.find(Category.class, intId);
             String categoryCategory = category.getCategoryName();
             List<Article> categoryArticles = DBCategory.getArticlesByCategory(category);
+            List<Journalist> journalists = DBHelper.getAll(Journalist.class);
+            List<Category> categories = DBHelper.getAll(Category.class);
+            List<Location> locations = DBHelper.getAll(Location.class);
             Map<String, Object> model = new HashMap<>();
+            model.put("journalists", journalists);
+            model.put("categories", categories);
+            model.put("locations", locations);
             model.put("categoryCategory", categoryCategory);
-            model.put("categories", category);
             model.put("categoryArticles", categoryArticles);
             model.put("template", "templates/categories/show.vtl");
             return new ModelAndView(model, "templates/layout.vtl");
@@ -71,8 +87,13 @@ public class CategoryController {
             String strId = req.params(":id");
             Integer intId = Integer.parseInt(strId);
             Category category = DBHelper.find(Category.class, intId);
-
             Map<String, Object> model = new HashMap<>();
+            List<Journalist> journalists = DBHelper.getAll(Journalist.class);
+            List<Category> categories = DBHelper.getAll(Category.class);
+            List<Location> locations = DBHelper.getAll(Location.class);
+            model.put("journalists", journalists);
+            model.put("categories", categories);
+            model.put("locations", locations);
             model.put ("category", category);
             model.put("template", "templates/categories/edit.vtl");
             return new ModelAndView(model, "templates/layout.vtl");

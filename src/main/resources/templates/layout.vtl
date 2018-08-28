@@ -13,27 +13,27 @@
                 <li class="dropdown">
                     <a href="/journalists" class="dropbtn">Journalists</a>
                     <div class="dropdown-content">
-                        <a href="/journalists/1">Link 1</a>
-                        <a href="/journalists/2">Link 2</a>
-                        <a href="/journalists/3">Link 3</a>
+                        #foreach( $journalist in $journalists)
+                        <a href="/journalists/$journalist.getId()">$journalist.getJournalistName()</a>
+                        #end
                     </div>
                 </li>
 
                 <li class="dropdown">
                     <a href="/categories" class="dropbtn">Categories</a>
                     <div class="dropdown-content">
-                        <a href="/categories/1">Link 1</a>
-                        <a href="/categories/2">Link 2</a>
-                        <a href="/categories/3">Link 3</a>
+                        #foreach( $category in $categories)
+                        <a href="/categories/$category.getId()">$category.getCategoryName()</a>
+                        #end
                     </div>
                 </li>
 
                 <li class="dropdown">
                     <a href="/locations" class="dropbtn">Location</a>
                     <div class="dropdown-content">
-                        <a href="/locations/1">Link 1</a>
-                        <a href="/locations/2">Link 2</a>
-                        <a href="/locations/3">Link 3</a>
+                        #foreach( $location in $locations)
+                        <a href="/locations/$location.getId()">$location.getLocationName()</a>
+                        #end
                     </div>
                 </li>
             </ul>

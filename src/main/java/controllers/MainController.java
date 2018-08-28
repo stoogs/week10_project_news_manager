@@ -1,8 +1,9 @@
 package controllers;
 
 import db.DBArticle;
+import db.DBHelper;
 import db.Seeds;
-import models.Article;
+import models.*;
 import spark.ModelAndView;
 import spark.template.velocity.VelocityTemplateEngine;
 
@@ -30,11 +31,16 @@ public class MainController {
 
             ArrayList<String> mostPopularArticles = new ArrayList<>();
             List<Article> articles = DBArticle.orderArticlesByAgeDesc();
-
+            List<Journalist> journalists = DBHelper.getAll(Journalist.class);
+            List<Category> categories = DBHelper.getAll(Category.class);
+            List<Location> locations = DBHelper.getAll(Location.class);
             for (Article article : articles){
                 String time = Seeds.storyAgeSimple(article.getTimeStamp());
                 mostPopularArticles.add(time); }
             model.put("articles", articles);
+            model.put("journalists", journalists);
+            model.put("categories", categories);
+            model.put("locations", locations);
             model.put("mostPopularArticles", mostPopularArticles);
             model.put("template", "templates/main.vtl");
             return new ModelAndView(model, "templates/layout.vtl");

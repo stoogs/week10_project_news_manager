@@ -2,8 +2,7 @@ package controllers;
 
 import db.DBHelper;
 import db.DBJournalist;
-import models.Article;
-import models.Journalist;
+import models.*;
 import spark.ModelAndView;
 import spark.template.velocity.VelocityTemplateEngine;
 
@@ -29,6 +28,11 @@ public class JournalistController {
         get("/journalists", (req, res) -> {
             Map<String, Object> model = new HashMap<>();
             List<Journalist> journalists = DBHelper.getAll(Journalist.class);
+            List<Category> categories = DBHelper.getAll(Category.class);
+            List<Location> locations = DBHelper.getAll(Location.class);
+            model.put("journalists", journalists);
+            model.put("categories", categories);
+            model.put("locations", locations);
             model.put("template", "templates/journalists/index.vtl");
             model.put("journalists", journalists);
             return new ModelAndView(model, "templates/layout.vtl");
@@ -38,6 +42,12 @@ public class JournalistController {
         get("/journalists/new", (req, res) -> {
             HashMap<String, Object> model = new HashMap<>();
             List<Journalist> newJournalists = DBHelper.getAll(Journalist.class);
+            List<Journalist> journalists = DBHelper.getAll(Journalist.class);
+            List<Category> categories = DBHelper.getAll(Category.class);
+            List<Location> locations = DBHelper.getAll(Location.class);
+            model.put("journalists", journalists);
+            model.put("categories", categories);
+            model.put("locations", locations);
             model.put("journalists", newJournalists);
             model.put("template", "templates/journalists/create.vtl");
             return new ModelAndView(model, "templates/layout.vtl");
@@ -61,7 +71,13 @@ public class JournalistController {
             String strId = req.params(":id");
             Integer intId = Integer.parseInt(strId);
             Journalist editJournalist = DBHelper.find(Journalist.class, intId);
+            List<Journalist> journalists = DBHelper.getAll(Journalist.class);
+            List<Category> categories = DBHelper.getAll(Category.class);
+            List<Location> locations = DBHelper.getAll(Location.class);
             Map<String, Object> model = new HashMap<>();
+            model.put("journalists", journalists);
+            model.put("categories", categories);
+            model.put("locations", locations);
             model.put("journalist", editJournalist);
             model.put("template", "templates/journalists/edit.vtl");
             return new ModelAndView(model, "templates/layout.vtl");
@@ -74,8 +90,14 @@ public class JournalistController {
             Journalist journalist = DBHelper.find(Journalist.class, intId);
             //Category category = DBHelper.find(Category.class, intId);
             List<Article> journalistArticles = DBJournalist.getArticlesByJournalist(journalist);
+            List<Journalist> journalists = DBHelper.getAll(Journalist.class);
+            List<Category> categories = DBHelper.getAll(Category.class);
+            List<Location> locations = DBHelper.getAll(Location.class);
             Map<String, Object> model = new HashMap<>();
-            model.put("journalist",journalist);
+            model.put("journalists", journalists);
+            model.put("categories", categories);
+            model.put("locations", locations);
+            model.put("journalist", journalist);
             model.put("journalistArticles", journalistArticles);
             model.put("template", "templates/journalists/show.vtl");
             return new ModelAndView(model, "templates/layout.vtl");
