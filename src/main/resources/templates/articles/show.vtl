@@ -12,8 +12,6 @@
                 <th>Location: </th>
                 <th>TimeStamp: </th>
                 <th>ViewCount: </th>
-                <th></th>
-                <th></th>
             </tr>
 
             <tr>
@@ -22,20 +20,6 @@
                 <td>$article.getLocation().getLocationName() </td>
                 <td>$storyAge</td>
                 <td>$counter</td>
-                <td>
-                    <div class="edit-button">
-                        <form action="/articles/edit/$article.getId()" method="get">
-                            <input type="submit" value="Edit Article">
-                        </form>
-                    </div>
-                </td>
-                <td>
-                    <div class="delete-button">
-                        <form action="/articles/delete/$article.getId()" method="get">
-                            <input type="submit" value="Delete Article">
-                        </form>
-                    </div>
-                </td>
             </tr>
         </table>
     <br>

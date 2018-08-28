@@ -1,4 +1,4 @@
-<p class="pageHeader">Categories</p>
+<h1>Categories</h1>
 
 <div class="add-button">
     <form action="/categories/new" method="get">
@@ -22,7 +22,7 @@
             </td>
             <td>
                 <div class="delete-button">
-                    <form action="/categories/delete/category.getId()" method="get">
+                    <form action="/categories/delete/$category.getId()" method="get">
                         <input type="submit" value="Delete Category">
                     </form>
                 </div>
