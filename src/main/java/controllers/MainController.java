@@ -13,6 +13,7 @@ import java.util.List;
 import java.util.Map;
 
 import static spark.Spark.get;
+import static spark.Spark.post;
 import static spark.SparkBase.staticFileLocation;
 
 public class MainController {
@@ -33,9 +34,10 @@ public class MainController {
             List<Journalist> journalists = DBHelper.getAll(Journalist.class);
             List<Category> categories = DBHelper.getAll(Category.class);
             List<Location> locations = DBHelper.getAll(Location.class);
-            for (Article article : articles){
+            for (Article article : articles) {
                 String time = Seeds.storyAgeSimple(article.getTimeStamp());
-                articleTimeStamp.add(time); }
+                articleTimeStamp.add(time);
+            }
             List<Article> articlesByViews = DBArticle.orderArticlesByViews();
             model.put("articlesByViews", articlesByViews);
             model.put("articles", articles);

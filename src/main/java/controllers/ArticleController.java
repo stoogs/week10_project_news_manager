@@ -27,11 +27,11 @@ public class ArticleController {
             List<Article> getArticles = DBArticle.orderArticlesByAgeDesc();
 
             //Create Array of times from Articles
-            for (Article article : getArticles){
-            String time = Seeds.storyAgeSimple(article.getTimeStamp());
-            stringTimes.add(time); }
-
-            model.put("articles", getArticles);
+            for (Article article : getArticles) {
+                String time = Seeds.storyAgeSimple(article.getTimeStamp());
+                stringTimes.add(time);
+            }
+            String search = req.params(":search");
             model.put("stringTimes", stringTimes);
             model.put("template", "templates/articles/index.vtl");
             return new ModelAndView(model, "templates/layout.vtl");
@@ -57,20 +57,20 @@ public class ArticleController {
             return new ModelAndView(model, "templates/layout.vtl");
         }, new VelocityTemplateEngine());
         //CREATE NEW
-        post ("/articles", (req, res) -> {
+        post("/articles", (req, res) -> {
             //Get new object
             int journalistId = Integer.parseInt(req.queryParams("journalist"));
-            Journalist journalist = DBHelper.find(Journalist.class,journalistId);
+            Journalist journalist = DBHelper.find(Journalist.class, journalistId);
             int categoryId = Integer.parseInt(req.queryParams("category"));
-            Category category= DBHelper.find(Category.class,categoryId);
+            Category category = DBHelper.find(Category.class, categoryId);
             int locationId = Integer.parseInt(req.queryParams("location"));
-            Location location = DBHelper.find(Location.class,locationId);
+            Location location = DBHelper.find(Location.class, locationId);
 
             String title = req.queryParams("title");
             String headline = req.queryParams("headline");
             String content = req.queryParams("content");
             GregorianCalendar timeStamp = new GregorianCalendar();
-            Article newArticle = new Article(title,journalist,category,location,timeStamp,headline,content);
+            Article newArticle = new Article(title, journalist, category, location, timeStamp, headline, content);
             DBHelper.save(newArticle);
             HashMap<String, Object> model = new HashMap<>();
             res.redirect("/articles");
@@ -111,7 +111,7 @@ public class ArticleController {
             //Add Counter to Articles.
             int counter = article.getCounter();
             System.out.println(counter);
-            counter = counter +1;
+            counter = counter + 1;
             article.setCounter(counter);
             DBHelper.update(article);
             //Get date of article
@@ -127,31 +127,31 @@ public class ArticleController {
         }, new VelocityTemplateEngine());
 
         //POST EDIT FORM
-        post ("/articles/edit/:id", (req, res) -> {
-        String strId = req.params(":id");
-        Integer intId = Integer.parseInt(strId);
-        //Load article fro id to edit
-        Article article = DBHelper.find(Article.class, intId);
+        post("/articles/edit/:id", (req, res) -> {
+            String strId = req.params(":id");
+            Integer intId = Integer.parseInt(strId);
+            //Load article fro id to edit
+            Article article = DBHelper.find(Article.class, intId);
 //        Get details from DB
-        int journalistId = Integer.parseInt(req.queryParams("journalist"));
-        Journalist journalist = DBHelper.find(Journalist.class,journalistId);
-        int categoryId = Integer.parseInt(req.queryParams("category"));
-        Category category = DBHelper.find(Category.class,categoryId);
-        int locationId = Integer.parseInt(req.queryParams("location"));
-        Location location = DBHelper.find(Location.class,locationId);
-        //Pull details from get forms
-        String title = req.queryParams("title");
-        String headline = req.queryParams("headline");
-        String content = req.queryParams("content");
-        //timestamp current time
-        GregorianCalendar timeStamp = new GregorianCalendar();
-        article.setTitle(title);
-        article.setHeadline(headline);
-        article.setContent(content);
-        article.setJournalist(journalist);
-        article.setCategory(category);
-        article.setTimeStamp(timeStamp);
-        article.setLocation(location);
+            int journalistId = Integer.parseInt(req.queryParams("journalist"));
+            Journalist journalist = DBHelper.find(Journalist.class, journalistId);
+            int categoryId = Integer.parseInt(req.queryParams("category"));
+            Category category = DBHelper.find(Category.class, categoryId);
+            int locationId = Integer.parseInt(req.queryParams("location"));
+            Location location = DBHelper.find(Location.class, locationId);
+            //Pull details from get forms
+            String title = req.queryParams("title");
+            String headline = req.queryParams("headline");
+            String content = req.queryParams("content");
+            //timestamp current time
+            GregorianCalendar timeStamp = new GregorianCalendar();
+            article.setTitle(title);
+            article.setHeadline(headline);
+            article.setContent(content);
+            article.setJournalist(journalist);
+            article.setCategory(category);
+            article.setTimeStamp(timeStamp);
+            article.setLocation(location);
             DBHelper.update(article);
             HashMap<String, Object> model = new HashMap<>();
             res.redirect("/articles");
@@ -159,7 +159,7 @@ public class ArticleController {
         }, new VelocityTemplateEngine());
 
         //DELETE
-        get ("/articles/delete/:id", (req, res) -> {
+        get("/articles/delete/:id", (req, res) -> {
             String strId = req.params(":id");
             Integer intId = Integer.parseInt(strId);
             Article articleToDelete = DBHelper.find(Article.class, intId);
@@ -167,7 +167,7 @@ public class ArticleController {
             res.redirect("/articles");
             return null;
         }, new VelocityTemplateEngine());
+
+
     }
-
-
 }
