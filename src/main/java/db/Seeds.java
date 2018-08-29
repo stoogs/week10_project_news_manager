@@ -188,7 +188,7 @@ public class Seeds {
                 storyAgeSimple += (" Just Added!");
             }
             else
-                storyAgeSimple += ("STOP THE BANANA PRESS!!");
+                storyAgeSimple += ("\uD83C\uDF4C \uD83C\uDF4C \uD83C\uDF4C  FRESH BANANA  \uD83C\uDF4C \uD83C\uDF4C \uD83C\uDF4C");
 
 //            System.out.println(storyAgeSimple);
             return storyAgeSimple;
