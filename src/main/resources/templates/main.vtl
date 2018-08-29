@@ -26,7 +26,7 @@
             <h1>Popular News</h1>
             #foreach($article in $articlesByViews)
             <br>
-            <h4>$article.getHeadline()</h4>
+            <h2>$article.getHeadline()</h2>
             <h4>Views: $article.getCounter() by $article.getJournalist().getJournalistName()
             <div class="show-button">
                 <form action="/articles/$article.getId()" method="get">
