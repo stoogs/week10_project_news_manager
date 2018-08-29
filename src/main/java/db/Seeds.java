@@ -13,12 +13,8 @@ public class Seeds {
         // -------------------------Seed Categories ---------------------------------------------------
         Category categoryCrime = new Category("Crime");
         DBHelper.save(categoryCrime);
-        Category categoryEnvironmental = new Category("Environmental");
-        DBHelper.save(categoryEnvironmental);
         Category categoryObituary = new Category("Obituary");
         DBHelper.save(categoryObituary);
-        Category categoryLocal = new Category("Local");
-        DBHelper.save(categoryLocal);
         Category categoryPropaganda = new Category("Propaganda");
         DBHelper.save(categoryPropaganda);
         Category categoryFakeNews = new Category("FakeNews");
@@ -27,16 +23,12 @@ public class Seeds {
         DBHelper.save(categoryOuterSpace);
         Category categoryLocalHero = new Category("Local Hero");
         DBHelper.save(categoryLocalHero);
-        Category categoryPolitics = new Category("Politics");
-        DBHelper.save(categoryPolitics);
-        Category categoryTech = new Category("Tech");
-        DBHelper.save(categoryTech);
         Category categoryScience = new Category("Science");
         DBHelper.save(categoryScience);
         Category categoryBusiness = new Category("Business");
         DBHelper.save(categoryBusiness);
         Category categoryEntertainment = new Category("Entertainment");
-        DBHelper.save(categoryBusiness);
+        DBHelper.save(categoryEntertainment);
         Category categoryFoodDrink = new Category("Food and Drink");
         DBHelper.save(categoryFoodDrink);
 
@@ -142,7 +134,7 @@ public class Seeds {
         Article articles01e12 = new Article("Press the Right Button and Do Summat!", jack, categoryEntertainment, locationOuterSpace, dateS01E012, "Monkey in space update, apparently there's a museum for chimponauts.", "Monkey News and Steve is getting annoyed with the particularly robust jingle. Karl wants to retire the feature; all the news has been done. There's an update on the first Monkey News from Episode 1. The monkey could never get that high again, even when he tried to get a band together. This monkey was Ham and another was Enos. When Enos went up, the buttons were reversed, but fortunately he knew it wasn't right. He became part of the chimponauts who lived in a retirement home with a museum where they could reminisce about their adventures. Karl has some inspiring words to close Monkey News.");
         DBHelper.save(articles01e12);
 
-        Article articles03e06 = new Article("Bonus Monkey News", alfredTheMonkey, categoryFoodDrink, locationWorld, dateS03E06, "Monkey brings great ape fruit juice to a town in the middle of nowhere, a long time ago.", "In a town somewhere awhile ago, a barrel used to appear in a village that contained a fruit drink. This was back when people only drank water. They only ate fruit back then, they didn’t drink it. Visitors to the village loved it, but they couldn’t sell it because they didn’t know where it came from. Word got out and a businessman from Chicago came in and wanted to find out where they got it. At night he saw a little fella and he followed him back to where they made it. Presumably the fruit drink was made by monkeys. Great ape fruit juice. (And that's why they stopped doing it...)");
+        Article articles03e06 = new Article("Bonus Monkey News", journalistMonkey86, categoryFoodDrink, locationWorld, dateS03E06, "Monkey brings great ape fruit juice to a town in the middle of nowhere, a long time ago.", "In a town somewhere awhile ago, a barrel used to appear in a village that contained a fruit drink. This was back when people only drank water. They only ate fruit back then, they didn’t drink it. Visitors to the village loved it, but they couldn’t sell it because they didn’t know where it came from. Word got out and a businessman from Chicago came in and wanted to find out where they got it. At night he saw a little fella and he followed him back to where they made it. Presumably the fruit drink was made by monkeys. Great ape fruit juice. (And that's why they stopped doing it...)");
         DBHelper.save(articles03e06);
     }
 
