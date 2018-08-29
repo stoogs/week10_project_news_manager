@@ -1,6 +1,13 @@
 body {
-    background-image: url("");
-    background-color: #efdfd5;
+
+    /* The image used */
+    /* Full height */
+    height: 100%;
+
+    /* Center and scale the image nicely */
+    background: #efdfd5 url("/images/face.png") no-repeat top ;
+    background-size: auto;
+
     font-family: 'Helvetica', 'Arial', sans-serif;
 }
 
@@ -103,6 +110,7 @@ li.dropdown {
 }
 
 
+
 .SideBar {
     grid-column: auto;
     grid-row: auto;
@@ -122,7 +130,15 @@ h2 {
 
 h3 {
     color: #644E5B;
-
+}
 h4 {
     color: #314455;
+}
+
+a {
+    text-decoration: none;
+}
+
+a:visited {
+    text-decoration: none;
 }
