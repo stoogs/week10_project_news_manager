@@ -13,6 +13,7 @@
             <div class="show-button">
                 <form action="/articles/$article.getId()" method="get">
                     <input type="submit" value="Show Article">
+
                 </form>
             </div></h3>
             <br>
@@ -26,8 +27,8 @@
             #foreach($article in $articlesByViews)
             <br>
             <h2>$article.getHeadline()</h2>
-            <h4>Views: $article.getCounter() by $article.getJournalist().getJournalistName()
-            <div class="show-button">
+            <h4>$article.getCounter()<img src="/images/bananalogo.png" alt="bananalogo" height="21" width ="15">  by $article.getJournalist().getJournalistName()</h4>
+                <div class="show-button">
                 <form action="/articles/$article.getId()" method="get">
                     <input type="submit" value="Show Article">
                 </form>
