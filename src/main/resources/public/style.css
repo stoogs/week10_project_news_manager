@@ -67,13 +67,14 @@ li a, .dropbtn {
 }
 
 li a:hover, .dropdown:hover .dropbtn {
-    background-color: #314455;
+    background-color: #9E5A63;
 }
 
 li.dropdown {
     display: inline-block;
     color: white;
 }
+
 
 .dropdown-content {
     display: none;
@@ -132,16 +133,16 @@ ul {
 }
 
 h1 {
-    color: #314455;
+    color: #644E5B;
 }
 
 
 h2 {
-    color: #9E5A63;
+    color: #314455;
 }
 
 h3 {
-    color: #644E5B;
+    color: #9E5A63;
 }
 h4 {
     color: #314455;
@@ -154,9 +155,9 @@ a {
 
 a:visited {
     text-decoration: none;
-    color: #9E5A63;
+    color: #314455;
 }
 a:link {
     text-decoration: none;
-    color: #9E5A63;
+    color: #314455;
 }
