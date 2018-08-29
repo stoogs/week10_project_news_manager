@@ -16,8 +16,7 @@ public class DBArticle {
 
     private static Session session;
 
-    //Give all articles from DB and sort by Journalist
-
+    //TODO Never Used
     public static List<Article> getArticleJournalists(Journalist journalist) {
         List<Article> results = null;
         session = HibernateUtil.getSessionFactory().openSession();
@@ -32,8 +31,9 @@ public class DBArticle {
             session.close();
         }
         return results;
-
     }
+
+    //Database returns existing articles ordered by newest to oldest date
     public static List<Article> orderArticlesByAgeDesc(){
         session = HibernateUtil.getSessionFactory().openSession();
         List<Article> articles = null;
@@ -49,6 +49,7 @@ public class DBArticle {
         return articles;
     }
 
+    //Database returns existing articles ordered by highest to lowest view count
     public static List<Article> orderArticlesByViews(){
         session = HibernateUtil.getSessionFactory().openSession();
         List<Article> articles = null;

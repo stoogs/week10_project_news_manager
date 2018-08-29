@@ -16,6 +16,7 @@ public class DBJournalist {
     private static Session session;
     private static Transaction transaction;
 
+    //Database returns existing articles by given Journalist
     public static List<Article> getArticlesByJournalist(Journalist journalist){
         session = HibernateUtil.getSessionFactory().openSession();
         List<Article> journalistArticles = null;

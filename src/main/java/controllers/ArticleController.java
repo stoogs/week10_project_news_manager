@@ -20,47 +20,46 @@ public class ArticleController {
 
     public void setupEndpoints() {
 
-//        INDEX
+        //INDEX
         get("/articles", (req, res) -> {
             Map<String, Object> model = new HashMap<>();
             ArrayList<String> stringTimes = new ArrayList<>();
             List<Article> getArticles = DBArticle.orderArticlesByAgeDesc();
 
-            //Create Array of times from Articles
+            //Create String Array of times from Articles
             for (Article article : getArticles) {
                 String time = Seeds.storyAgeSimple(article.getTimeStamp());
                 stringTimes.add(time);
             }
 
-
-            model.put("articles", getArticles);
-            model.put("stringTimes", stringTimes);
+            model.put("articles", getArticles); //Send Array of Articles
+            model.put("stringTimes", stringTimes);  //Send Array Of String Times
             model.put("template", "templates/articles/index.vtl");
             return new ModelAndView(model, "templates/layout.vtl");
         }, new VelocityTemplateEngine());
 //NEW
         get("/articles/new", (req, res) -> {
             HashMap<String, Object> model = new HashMap<>();
+            //Get all Articles from DataBase
             List<Article> newArticles = DBHelper.getAll(Article.class);
-            //Get List to use for DDMB
+
+            //Get Lists to use for Drop Down Menu Bars
             List<Category> categories = DBHelper.getAll(Category.class);
-            //Get List to use for DDMB
             List<Journalist> journalists = DBHelper.getAll(Journalist.class);
-            //Get List to use for DDMB
             List<Location> locations = DBHelper.getAll(Location.class);
-            //send array of existing journalists to DDMB
+
+            //send arrays to Drop Down Menu Bars
             model.put("journalists", journalists);
-            //send array of existing categories to DDMB
             model.put("categories", categories);
-            //send array of existing locations to DDMB
             model.put("locations", locations);
             model.put("articles", newArticles);
             model.put("template", "templates/articles/create.vtl");
             return new ModelAndView(model, "templates/layout.vtl");
         }, new VelocityTemplateEngine());
+
         //CREATE NEW
         post("/articles", (req, res) -> {
-            //Get new object
+            //Get chosen existing object id's from Drop Down Menu Bars to use here.
             int journalistId = Integer.parseInt(req.queryParams("journalist"));
             Journalist journalist = DBHelper.find(Journalist.class, journalistId);
             int categoryId = Integer.parseInt(req.queryParams("category"));
@@ -68,12 +67,18 @@ public class ArticleController {
             int locationId = Integer.parseInt(req.queryParams("location"));
             Location location = DBHelper.find(Location.class, locationId);
 
+            //Get new paramaters typed in for New Article
             String title = req.queryParams("title");
             String headline = req.queryParams("headline");
             String content = req.queryParams("content");
+
+            //Create new Time for Article publish date
             GregorianCalendar timeStamp = new GregorianCalendar();
+            //Create New Article from all elements
             Article newArticle = new Article(title, journalist, category, location, timeStamp, headline, content);
+            // Save Article to DataBase
             DBHelper.save(newArticle);
+            //Return to Articles view to see list again
             HashMap<String, Object> model = new HashMap<>();
             res.redirect("/articles");
             return new ModelAndView(model, "templates/layout.vtl");
@@ -85,19 +90,14 @@ public class ArticleController {
             Integer intId = Integer.parseInt(strId);
             //find article to edit using ID
             Article editArticle = DBHelper.find(Article.class, intId);
-            //Get List to use for DDMB
             List<Category> categories = DBHelper.getAll(Category.class);
-            //Get List to use for DDMB
             List<Journalist> journalists = DBHelper.getAll(Journalist.class);
-            //Get List to use for DDMB
             List<Location> locations = DBHelper.getAll(Location.class);
-
             Map<String, Object> model = new HashMap<>();
+
             //send array of existing journalists to DDMB
             model.put("journalists", journalists);
-            //send array of existing categories to DDMB
             model.put("categories", categories);
-            //send array of existing locations to DDMB
             model.put("locations", locations);
             model.put("article", editArticle);
             model.put("template", "templates/articles/edit.vtl");
@@ -110,11 +110,12 @@ public class ArticleController {
             Integer intId = Integer.parseInt(strId);
             Article article = DBHelper.find(Article.class, intId);
 
-            //Add Counter to Articles.
+            //Add Counter to Articles
+            //Retrieve current view counts for current article
             int counter = article.getCounter();
-            System.out.println(counter);
             counter = counter + 1;
             article.setCounter(counter);
+            //Every time page is refreshed counter is added to then stored in  DataBase
             DBHelper.update(article);
             //Get date of article
             String storyAgeSimple = Seeds.storyAgeSimple(article.getTimeStamp());
@@ -134,7 +135,7 @@ public class ArticleController {
             Integer intId = Integer.parseInt(strId);
             //Load article fro id to edit
             Article article = DBHelper.find(Article.class, intId);
-//        Get details from DB
+            // Get details from DataBase
             int journalistId = Integer.parseInt(req.queryParams("journalist"));
             Journalist journalist = DBHelper.find(Journalist.class, journalistId);
             int categoryId = Integer.parseInt(req.queryParams("category"));
@@ -147,6 +148,7 @@ public class ArticleController {
             String content = req.queryParams("content");
             //timestamp current time
             GregorianCalendar timeStamp = new GregorianCalendar();
+            //Set all new values and update DataBase
             article.setTitle(title);
             article.setHeadline(headline);
             article.setContent(content);
@@ -162,6 +164,7 @@ public class ArticleController {
 
         //DELETE
         get("/articles/delete/:id", (req, res) -> {
+            //Get id for article from menubar
             String strId = req.params(":id");
             Integer intId = Integer.parseInt(strId);
             Article articleToDelete = DBHelper.find(Article.class, intId);
