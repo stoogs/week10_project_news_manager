@@ -31,7 +31,9 @@ public class ArticleController {
                 String time = Seeds.storyAgeSimple(article.getTimeStamp());
                 stringTimes.add(time);
             }
-            String search = req.params(":search");
+
+
+            model.put("articles", getArticles);
             model.put("stringTimes", stringTimes);
             model.put("template", "templates/articles/index.vtl");
             return new ModelAndView(model, "templates/layout.vtl");
@@ -167,7 +169,5 @@ public class ArticleController {
             res.redirect("/articles");
             return null;
         }, new VelocityTemplateEngine());
-
-
     }
 }
