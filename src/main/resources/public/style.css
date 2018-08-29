@@ -1,8 +1,11 @@
 body {
-    background-image: url("/images/face.png");
-    background-color: bisque;
+    background-image: url("");
+    background-color: #efdfd5;
     font-family: 'Helvetica', 'Arial', sans-serif;
+}
 
+tbody {
+    color: #644E5B;
 }
 
 .Menu_grid {
@@ -21,11 +24,6 @@ body {
 .Navtitle{
     max-height: 100px;
 }
-
-.Navbar{
-    background-color: #D9B386;
-}
-
 
 ul {
     list-style-type: none;
@@ -92,27 +90,38 @@ li.dropdown {
 .Search{
     grid-auto-columns: auto;
     grid-auto-rows: auto;
-    background-color: orange;
-    border: 2px solid rgb(10,10,10);
+    background-color: #d09b78;
+    border: 0px solid rgb(10,10,10);
     text-align: center;
 }
 
 
 .MainNews {
     grid-auto-columns: auto;
-    border: 2px solid rgb(10, 10, 10);
-    text-align: center;
+    border: 0px solid rgb(10, 10, 10);
 }
 
 
 .SideBar {
     grid-column: auto;
     grid-row: auto;
-    border: 2px solid rgb(10, 10, 10);
+    border: 0px solid rgb(10, 10, 10);
     text-align: center;
-    background-color: crimson;
+    background-color: #c96567;
+}
+
+h1 {
+    color: #314455;
 }
 
 
+h2 {
+    color: #9E5A63;
+}
 
+h3 {
+    color: #644E5B;
 
+h4 {
+    color: #314455;
+}
