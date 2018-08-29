@@ -25,7 +25,6 @@
             <h1>Popular News</h1>
             #foreach($article in $articlesByViews)
             <br>
-
             <h2>$article.getHeadline()</h2>
             <h4>$article.getCounter()<img src="/images/bananalogo.png" alt="bananalogo" height="21" width ="15">  by $article.getJournalist().getJournalistName()</h4>
                 <div class="show-button">
