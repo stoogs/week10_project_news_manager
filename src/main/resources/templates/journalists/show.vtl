@@ -1,24 +1,23 @@
 <table>
     <br><br>
     <tr>
+        <th>$journalist.getJournalistName()</th>
+        <th></th>
+    </tr>
+    <tr>
         #set($name = "/images/profile" + $journalist.getId() + ".png")
         <td><img src="$name" height="200" width="200" alt="Journalist"></td>
-        <td>$journalist.getJournalistName()</td>
         <td>$journalist.getBiography()</td>
     </tr>
 </table>
-<fieldset>
-<table>
-    <tr>
-        <th>Title</th>
-        <th>Headline</th>
-        <th>Content </th>
-    </tr>
-    #foreach($article in $journalistArticles)
-    <tr>
-        <td><a>$article.getTitle()</a></td>
-        <td><a>$article.getHeadline()</a></td>
-        <td><a>$article.getContent()</a></td>
-    <tr>
+
+        #foreach($article in $journalistArticles)
+    <fieldset>
+        <h2><a href="/articles/$article.getId()">$article.getTitle()</a></h2>
+        <h3><a>$article.getHeadline()</a></h3>
+        <h4><a>$article.getContent()</a></h4>
+    </fieldset>
+<br>
         #end
-</table>
+
+

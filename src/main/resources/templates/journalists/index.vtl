@@ -11,23 +11,27 @@
     <table>
         #foreach($journalist in $journalists)
         <tr>
+            #set($name = "/images/profile" + $journalist.getId() + ".png")
+            <td><img src="$name" height="75" width="75" alt="Journalist"></td>
+
             <td>
                 <a href="/journalists/$journalist.getId()">$journalist.getJournalistName()</a>
             </td>
             <td>
                 <div class="edit-button">
                     <form action="/journalists/edit/$journalist.getId()" method="get">
-                        <input type="submit" value="Edit Location">
+                        <input type="submit" value="Edit Journalist">
                     </form>
                 </div>
             </td>
             <td>
                 <div class="delete-button">
                     <form action="/journalists/delete/$journalist.getId()" method="get">
-                        <input type="submit" value="Delete Location">
+                        <input type="submit" value="Delete Journalist">
                     </form>
                 </div>
             </td>
+
         <tr>
             #end
     </table>
