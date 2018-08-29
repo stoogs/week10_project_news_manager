@@ -107,12 +107,12 @@ public class Seeds {
         articles01e05.setCounter(87);
         DBHelper.save(articles01e05);
 
-        Article articles01e06 = new Article("NYFD Monkey", enos, categoryLocalHero, locationWorld, dateS01E06,
+        Article articles01e06 = new Article("NYFD Monkey", enos, categoryLocalHero, locationJungle, dateS01E06,
                 "Monkey from NYFD saves people from burning building", " involves a skyscraper fire in New York and a short little hero with long hairy arms. DJ ReachAround presents a dance mix version of I Could Eat a Knob at Night.");
         articles01e06.setCounter(5);
         DBHelper.save(articles01e06);
 
-        Article articles01e07 = new Article("Monkey on building site", jenny, categoryLocalHero, locationWorld, dateS01E07,
+        Article articles01e07 = new Article("Monkey on building site", jenny, categoryLocalHero, locationJungle, dateS01E07,
                 "Monkey builder goes from building to building just building", "While working on a building site, a man is surprised to see a little fella working on the top bit. He is curious why this bloke stays working high up and never comes down, after more investigation, the bloke makes a startling revelation...");
         articles01e07.setCounter(54);
         DBHelper.save(articles01e07);
@@ -137,8 +137,7 @@ public class Seeds {
         Article articles03e06 = new Article("Bonus Monkey News", journalistMonkey86, categoryFoodDrink, locationWorld, dateS03E06, "Monkey brings great ape fruit juice to a town in the middle of nowhere, a long time ago.", "In a town somewhere awhile ago, a barrel used to appear in a village that contained a fruit drink. This was back when people only drank water. They only ate fruit back then, they didn’t drink it. Visitors to the village loved it, but they couldn’t sell it because they didn’t know where it came from. Word got out and a businessman from Chicago came in and wanted to find out where they got it. At night he saw a little fella and he followed him back to where they made it. Presumably the fruit drink was made by monkeys. Great ape fruit juice. (And that's why they stopped doing it...)");
         DBHelper.save(articles03e06);
 
-       List<Article> result =  DBArticle.searchArticles("Monkey");
-        System.out.println(result);
+
     }
 
         //-----------------------------------------------------------------------
