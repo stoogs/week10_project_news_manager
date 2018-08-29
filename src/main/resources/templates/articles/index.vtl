@@ -6,15 +6,15 @@
             <input type="submit" value="Create Article">
         </form>
     </div>
-
+<br>
     <table>
         <tr>
             <th></th>
             <th></th>
-            <th>Title: </th>
-            <th>Journalist: </th>
-            <th>Headline: </th>
-            <th>Published: </th>
+            <th><h3>Title:</h3></th>
+            <th><h3>Journalist:</h3></th>
+            <th><h3>Headline:</h3></th>
+            <th><h3>Published:</h3></th>
             <th></th>
         </tr>
             #set($counter = 0)
@@ -34,10 +34,10 @@
                     </form>
                 </div>
             </td>
-            <td>$article.getTitle() </td>
-            <td>$article.getJournalist().getJournalistName() </td>
-            <td>$article.getHeadline() </td>
-            <td>$stringTimes[$counter]</td>
+            <td><h4>$article.getTitle()</h4></td>
+            <td><h4>$article.getJournalist().getJournalistName()</h4></td>
+            <td><h4>$article.getHeadline()</h4></td>
+            <td><h4>$stringTimes[$counter]</h4></td>
             <td>
                 <div class="show-button">
                     <form action="/articles/$article.getId()" method="get">

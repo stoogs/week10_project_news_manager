@@ -5,15 +5,14 @@
         <input type="submit" value="Create Journalist">
     </form>
 </div>
-
-
+<br>
 <div class="container">
     <table>
         #foreach($journalist in $journalists)
         <tr>
             #set($name = "/images/profile" + $journalist.getId() + ".png")
             <td><img src="$name" height="75" width="75" alt="Journalist"></td>
-
+            <td></td>
             <td>
                 <a href="/journalists/$journalist.getId()">$journalist.getJournalistName()</a>
             </td>
