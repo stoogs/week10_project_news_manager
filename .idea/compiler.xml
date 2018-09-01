@@ -6,6 +6,7 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="MonsterMunch" />
         <module name="Project" />
         <module name="spark_with_hibernate_end" />
       </profile>
