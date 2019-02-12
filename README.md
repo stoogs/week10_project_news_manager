@@ -1,10 +1,14 @@
 # week10_project_news_manager
-Java/Hibernate/Spark 'news manager pair project with Gemma'
+Java/Hibernate/Spark 'news manager pair project with Gemma Percival'
+![](LookAround.gif)
+<p>Example</p>
+
 <br>
 <h2>News Manager</h2>
 Launch <b>src/main/java/controllers/MainController.class</b>
 <br>
 then goto  <b>http://localhost:4567/</b></p>
+
 <h4>Setup - MacOS</h4>
 
 INSTALL PSQL - Requires HomeBrew<Br>
@@ -50,3 +54,7 @@ NoDB ? From Bash terminal manually createDB
 <br>
 
 <b> $ createdb monstermunchdb </b>
+<br>
+<br>
+<h2>CRUD Example</h2>
+![](CRUD.gif)
