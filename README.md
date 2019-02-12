@@ -57,4 +57,6 @@ NoDB ? From Bash terminal manually createDB
 <br>
 <br>
 <h2>CRUD Example</h2>
+
+
 ![](CRUD.gif)
