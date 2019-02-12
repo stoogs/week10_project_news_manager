@@ -1,7 +1,6 @@
 # week10_project_news_manager
 Java/Hibernate/Spark 'news manager pair project with Gemma Percival'
 ![](LookAround.gif)
-<p>Example</p>
 
 <br>
 <h2>News Manager</h2>
